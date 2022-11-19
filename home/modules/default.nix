@@ -1,0 +1,26 @@
+{
+  imports = [
+    ./desktop/gnome
+    #./desktop/hyprland
+    ./desktop/sway
+    ./desktop/xmonad
+    ./programs/alacritty.nix
+    #./programs/emacs.nix
+    ./programs/firefox.nix
+    ./programs/fnott.nix
+    ./programs/foot.nix
+    ./programs/helix.nix
+    ./programs/mpd.nix
+    ./programs/mpv.nix
+    ./programs/ncmpcpp.nix
+    ./programs/newsboat.nix
+    ./programs/podman.nix
+    ./programs/qutebrowser.nix
+    ./programs/syncthing.nix
+    ./programs/swayidle.nix
+    ./programs/vscode.nix
+    ./programs/waybar.nix
+    ./programs/wlsunset.nix
+    ./programs/zathura.nix
+  ];
+}
