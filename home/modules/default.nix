@@ -1,11 +1,9 @@
 {
   imports = [
     ./desktop/gnome
-    #./desktop/hyprland
     ./desktop/sway
     ./desktop/xmonad
     ./programs/alacritty.nix
-    #./programs/emacs.nix
     ./programs/firefox.nix
     ./programs/fnott.nix
     ./programs/foot.nix
