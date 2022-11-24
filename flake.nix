@@ -5,7 +5,7 @@
     nixpkgs.url = github:nixos/nixpkgs/nixos-22.11;
     
     # flakes
-    hm.url = "github:nix-community/home-manager";
+    hm.url = "github:nix-community/home-manager/release-22.11";
     hm.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:Misterio77/nix-colors/3.0.0";
