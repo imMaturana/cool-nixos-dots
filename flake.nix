@@ -2,9 +2,7 @@
   description = "My NixOS config";
 
   inputs = {
-    # channels
-    stable.url = "github:nixos/nixpkgs/nixos-22.05";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = github:nixos/nixpkgs/nixos-22.11;
     
     # flakes
     hm.url = "github:nix-community/home-manager";
@@ -15,9 +13,6 @@
     nixvim.url = "github:pta2002/nixvim";
     
     nur.url = "github:nix-community/NUR";
-
-    # nixpkgs
-    nixpkgs.follows = "unstable";
   };
 
   outputs =
@@ -31,15 +26,11 @@
         "x86_64-linux"
       ];
       
-      legacyPackages = eachSupportedSystem (system: import nixpkgs rec {
+      legacyPackages = eachSupportedSystem (system: import nixpkgs {
         inherit system;
         config = { allowUnfree = true; };
         overlays = with inputs; [
           nur.overlay
-
-          (_: _: {
-            stable = import stable { inherit system config; };
-          })
         ];
       });
     in

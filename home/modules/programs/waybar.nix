@@ -45,7 +45,7 @@ in
   config = mkIf cfg.enable {
     programs.waybar = {
       enable = true;
-      package = pkgs.stable.waybar;
+      package = pkgs.waybar;
 
       settings = mapAttrsToList (output: v: {
         inherit output;

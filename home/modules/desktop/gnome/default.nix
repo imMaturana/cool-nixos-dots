@@ -58,7 +58,7 @@ in
       ];
   
       nixpkgs.overlays = [(final: prev: {
-        keepassxc = final.stable.gnome-secrets;
+        keepassxc = final.gnome-secrets;
       })];
   
       dconf = {
