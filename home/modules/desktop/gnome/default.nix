@@ -102,6 +102,8 @@ in
           };
         } // bindings;
       };
+      
+      services.gpg-agent.pinentryFlavor = "gnome3";
 
       gtk = {
         enable = true;
