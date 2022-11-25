@@ -21,7 +21,6 @@
       };
     };
 
-    firefox.enable = true;
     syncthing.enable = true;
     podman.enable = true;
 

@@ -6,6 +6,7 @@
     ./fish.nix
     ./git.nix
     ./gpg.nix
+    ./librewolf.nix
     ./neovim.nix
     ./tmux.nix
   ];
