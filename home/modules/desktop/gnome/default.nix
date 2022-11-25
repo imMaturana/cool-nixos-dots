@@ -55,12 +55,9 @@ in
         gnome-text-editor
         gnome.gnome-calculator
         gnome.eog
+        gnome-secrets
       ];
-  
-      nixpkgs.overlays = [(final: prev: {
-        keepassxc = final.gnome-secrets;
-      })];
-  
+
       dconf = {
         enable = true;
     
