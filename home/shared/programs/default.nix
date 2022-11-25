@@ -13,7 +13,6 @@
   home.packages = with pkgs; [
     amfora
     keepassxc
-    nixpkgs-fmt
     yt-dlp
     zip
     unzip
