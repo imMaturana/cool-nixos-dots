@@ -11,6 +11,7 @@
     nix-colors.url = "github:Misterio77/nix-colors/3.0.0";
 
     nixvim.url = "github:pta2002/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
     
     nur.url = "github:nix-community/NUR";
   };
