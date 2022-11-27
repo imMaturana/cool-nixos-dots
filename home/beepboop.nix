@@ -15,11 +15,21 @@
   ];
 
   modules = {
-    desktop.gnome = {
-      enable = true;
-      bindings = {
-        "<Ctrl><Alt>T" = "kgx";
-      };
+    desktop.sway.enable = true;
+    waybar.bars."eDP-1" = {
+      modules-left = [
+        "custom/scratchpad"
+        "sway/workspaces"
+        "sway/mode"
+      ];
+      modules-right = [
+        "tray"
+        "idle_inhibitor"
+        "pulseaudio"
+        "battery"
+        "network"
+        "clock"
+      ];
     };
 
     syncthing.enable = true;

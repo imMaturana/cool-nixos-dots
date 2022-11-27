@@ -3,8 +3,10 @@
 {
   imports = [
     ./shared
-    ./features/gnome.nix
     ./features/laptop.nix
+    ./features/wayland.nix
+    ./features/flatpak.nix
+    ./features/noto-fonts.nix
     ./features/firewall.nix
     ./features/gaming.nix
     ./users/maturana.nix
