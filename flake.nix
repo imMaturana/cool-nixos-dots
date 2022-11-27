@@ -7,6 +7,9 @@
     # flakes
     hm.url = "github:nix-community/home-manager/release-22.11";
     hm.inputs.nixpkgs.follows = "nixpkgs";
+    
+    emacs.url = github:nix-community/emacs-overlay;
+    emacs.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:Misterio77/nix-colors/3.0.0";
 
@@ -32,6 +35,7 @@
         config = { allowUnfree = true; };
         overlays = with inputs; [
           nur.overlay
+          emacs.overlay
         ];
       });
       

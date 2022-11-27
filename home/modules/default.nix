@@ -4,6 +4,7 @@
     ./desktop/sway
     ./desktop/xmonad
     ./programs/alacritty.nix
+    ./programs/emacs.nix
     ./programs/fnott.nix
     ./programs/foot.nix
     ./programs/helix.nix
