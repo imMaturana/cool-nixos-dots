@@ -14,6 +14,7 @@
   home.packages = with pkgs; [
     amfora
     keepassxc
+    lazygit
     yt-dlp
     zip
     unzip
