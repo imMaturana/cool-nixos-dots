@@ -34,6 +34,9 @@
           nur.overlay
         ];
       });
+      
+      mkHost = nixpkgs.lib.nixosSystem;
+      mkHome = hm.lib.homeManagerConfiguration;
     in
     {
       homeManagerModules = import ./modules/home-manager;
@@ -43,13 +46,13 @@
         default = import ./shell.nix { pkgs = legacyPackages.${system}; };
       });
       
-      nixosConfigurations."beepboop" = nixpkgs.lib.nixosSystem {
+      nixosConfigurations."beepboop" = mkHost {
         pkgs = legacyPackages.x86_64-linux;
         modules = [ ./hosts/beepboop.nix ];
         specialArgs = { inherit self inputs; };
       };
 
-      homeConfigurations."maturana@beepboop" = hm.lib.homeManagerConfiguration {
+      homeConfigurations."maturana@beepboop" = mkHome {
         pkgs = self.outputs.nixosConfigurations.beepboop.pkgs;
         modules = [ ./home/beepboop.nix ];
         extraSpecialArgs = { inherit self inputs; };
