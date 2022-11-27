@@ -6,6 +6,7 @@
     ./fish.nix
     ./git.nix
     ./gpg.nix
+    ./lazygit.nix
     ./librewolf.nix
     ./neovim.nix
     ./tmux.nix
@@ -14,7 +15,6 @@
   home.packages = with pkgs; [
     amfora
     keepassxc
-    lazygit
     yt-dlp
     zip
     unzip
