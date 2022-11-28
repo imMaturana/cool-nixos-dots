@@ -39,7 +39,9 @@
     helix.theme = "gruvbox";
 
     vscode.enable = true;
-    vscode.hide = [ "menu" ];
+    vscode.theme = "Gruvbox Dark Medium";
+    vscode.vim.enable = true;
+    vscode.hide = [ "menu" "scrollbars" "activity" ];
   };
 
   colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
