@@ -32,5 +32,11 @@ in
       enable = true;
       package = config.programs.emacs.package;
     };
+
+    programs.git.ignores = [
+      "#*#"
+      "*~"
+      ".*#"
+    ];
   };
 }
