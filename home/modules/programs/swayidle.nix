@@ -34,20 +34,20 @@ in
       }];
     };
 
-    # programs.swaylock.settings = {
-    #   font = config.fontProfiles.regular.family;
-    #   font-size = 16;
+    programs.swaylock.settings = {
+      font = config.fontProfiles.regular.family;
+      font-size = 16;
 
-    #   color = config.colorscheme.colors.base00;
+      color = config.colorscheme.colors.base00;
 
-    #   key-hl-color = config.colorscheme.colors.base0B;
+      key-hl-color = config.colorscheme.colors.base0B;
 
-    #   inside-color = config.colorscheme.colors.base00;
-    #   inside-wrong-color = config.colorscheme.colors.base00;
+      inside-color = config.colorscheme.colors.base00;
+      inside-wrong-color = config.colorscheme.colors.base00;
 
-    #   ring-color = config.colorscheme.colors.base02;
-    #   ring-ver-color = config.colorscheme.colors.base0A;
-    #   ring-wrong-color = config.colorscheme.colors.base08;
-    # };
+      ring-color = config.colorscheme.colors.base02;
+      ring-ver-color = config.colorscheme.colors.base0A;
+      ring-wrong-color = config.colorscheme.colors.base08;
+    };
   };
 }
