@@ -12,6 +12,7 @@
   home.packages = with pkgs; [
     distrobox
     element-desktop
+    libreoffice
   ];
 
   modules = {
