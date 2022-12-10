@@ -4,9 +4,7 @@
   imports = [
     ./shared
     ./features/laptop.nix
-    ./features/wayland.nix
-    ./features/flatpak.nix
-    ./features/noto-fonts.nix
+    ./features/gnome.nix
     ./features/firewall.nix
     ./features/gaming.nix
     ./users/maturana.nix

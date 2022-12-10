@@ -17,12 +17,11 @@ let
 in
 {
   options.fontProfiles = {
-    enable = mkEnableOption "Enable font profiles";
     regular = fontModule;
     monospace = fontModule;
   };
 
-  config = mkIf cfg.enable {
+  config = {
     fonts.fontconfig.enable = true;
     home.packages = [
       cfg.regular.package

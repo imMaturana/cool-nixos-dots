@@ -1,5 +1,6 @@
 { inputs
 , pkgs
+, config
 , ...
 }:
 
@@ -14,25 +15,36 @@
     element-desktop
     libreoffice
   ];
+  
+  fontProfiles = {
+    regular = {
+      family = "Noto Sans";
+      package = pkgs.noto-fonts;
+    };
+    
+    monospace = {
+      family = "JetBrainsMono Nerd Font";
+      package = pkgs.nerdfonts.override {
+        fonts = [ "JetBrainsMono" ];
+      };
+    };
+  };
+  
+  desktopEnvironment.gnome = {
+    enable = true;
+    themeVariant = "dark";
+  
+    bindings = {
+      "<Ctrl><Alt>T" = "kgx";
+    };
+    
+    nightLight = {
+      enable = true;
+      temperature = 3500;
+    };
+  };
 
   modules = {
-    desktop.sway.enable = true;
-    waybar.bars."eDP-1" = {
-      modules-left = [
-        "custom/scratchpad"
-        "sway/workspaces"
-        "sway/mode"
-      ];
-      modules-right = [
-        "tray"
-        "idle_inhibitor"
-        "pulseaudio"
-        "battery"
-        "network"
-        "clock"
-      ];
-    };
-
     syncthing.enable = true;
     podman.enable = true;
 

@@ -29,20 +29,4 @@
       ];
     };
   };
-  
-  fontProfiles = {
-    enable = true;
-    
-    regular = lib.mkDefault {
-      family = "JetBrainsMono";
-      package = pkgs.jetbrains-mono;
-    };
-    
-    monospace = {
-      family = "JetBrainsMono Nerd Font";
-      package = pkgs.nerdfonts.override {
-        fonts = [ "JetBrainsMono" ];
-      };
-    };
-  };
 }
