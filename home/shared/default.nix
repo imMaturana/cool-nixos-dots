@@ -9,6 +9,7 @@
 {
   imports = [
     self.homeManagerModules
+    inputs.hyprland.homeManagerModules.default
     inputs.nix-colors.homeManagerModule
     inputs.nixvim.homeManagerModules.nixvim
 
@@ -27,6 +28,12 @@
         "$HOME/.local/bin"
         "$HOME/.bin"
       ];
+    };
+    
+    keyboard = {
+      layout = "us";
+      variant = "colemak";
+      options = [ "caps:swapescape" ];
     };
   };
 }

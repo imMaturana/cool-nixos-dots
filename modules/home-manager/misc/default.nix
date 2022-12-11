@@ -1,1 +1,7 @@
-{ imports = [ ./fonts.nix ./wallpaper.nix ]; }
+{
+  imports = [
+    ./fonts.nix
+    ./monitors.nix
+    ./wallpaper.nix
+  ];
+}

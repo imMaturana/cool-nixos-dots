@@ -9,6 +9,7 @@
     ./lazygit.nix
     ./librewolf.nix
     ./neovim.nix
+    ./syncthing.nix
     ./tmux.nix
   ];
   

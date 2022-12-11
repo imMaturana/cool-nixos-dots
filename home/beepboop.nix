@@ -1,13 +1,20 @@
 { inputs
 , pkgs
-, config
 , ...
 }:
 
 {
   imports = [
     ./shared
-    ./modules
+    ./features/hyprland.nix
+    ./features/podman.nix
+    ./features/helix.nix
+    ./features/vscode-vim.nix
+    ./features/emacs.nix
+  ];
+  
+  home.monitors = [
+    "eDP-1"
   ];
 
   home.packages = with pkgs; [
@@ -18,8 +25,8 @@
   
   fontProfiles = {
     regular = {
-      family = "Noto Sans";
-      package = pkgs.noto-fonts;
+      family = "JetBrains Mono";
+      package = pkgs.jetbrains-mono;
     };
     
     monospace = {
@@ -30,33 +37,12 @@
     };
   };
   
-  desktopEnvironment.gnome = {
-    enable = true;
-    themeVariant = "dark";
+  programs.vscode = {
+    userSettings = {
+      workbench.colorTheme = "Gruvbox Dark Medium";
+    };
+  };
   
-    bindings = {
-      "<Ctrl><Alt>T" = "kgx";
-    };
-    
-    nightLight = {
-      enable = true;
-      temperature = 3500;
-    };
-  };
-
-  modules = {
-    syncthing.enable = true;
-    podman.enable = true;
-
-    helix.enable = true;
-    helix.theme = "gruvbox";
-
-    vscode.enable = true;
-    vscode.theme = "Gruvbox Dark Medium";
-    vscode.vim.enable = true;
-    vscode.hide = [ "menu" "scrollbars" "activity" ];
-  };
-
   colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
   wallpaper = pkgs.fetchurl {
     url = "https://w.wallhaven.cc/full/g8/wallhaven-g876zd.jpg";

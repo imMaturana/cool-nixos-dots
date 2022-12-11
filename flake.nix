@@ -11,6 +11,8 @@
     emacs.url = github:nix-community/emacs-overlay;
     emacs.inputs.nixpkgs.follows = "nixpkgs";
 
+    hyprland.url = github:hyprwm/Hyprland/v0.19.1beta;
+
     nix-colors.url = "github:Misterio77/nix-colors/3.0.0";
 
     nixvim.url = "github:pta2002/nixvim";

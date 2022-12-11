@@ -19,20 +19,6 @@ let
       name = "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom${toString i}";
       value = binding;
     }) bindingsList);
-  
-  fontType = family: types.submodule {
-    options = {
-      family = mkOption {
-        type = types.str;
-        default = family;
-      };
-      
-      size = mkOption {
-        type = types.int;
-        default = 10;
-      };
-    };
-  };
 in
 {
   options = {
@@ -56,12 +42,6 @@ in
         '';
       };
       
-      wallpaper = mkOption {
-        type = types.nullOr types.path;
-        default = config.wallpaper;
-        internal = true;
-      };
-         
       workspaces = mkOption {
         type = types.enum ([ "dynamic" ] ++ lists.range 1 8);
         default = "dynamic";
@@ -101,13 +81,18 @@ in
           "org/gnome/desktop/background" = rec {
             primary-color = "#000000";
             secondary-color = "#000000";
-            picture-uri = mkIf (!isNull cfg.wallpaper) "file://${cfg.wallpaper}";
+            picture-uri = mkIf (!isNull config.wallpaper) "file://${config.wallpaper}";
             picture-uri-dark = picture-uri;
           };
         
           "org/gnome/desktop/interface" = {
             monospace-font-name = "${config.fontProfiles.monospace.family} 10";
             color-scheme = if cfg.themeVariant == "light" then "light" else "prefer-dark";
+          };
+          
+          "org/gnome/settings-daemon/peripherals" = {
+            tap-to-click = true;
+            natural-scroll = true;
           };
         
           "org/gnome/mutter" = {
@@ -119,8 +104,8 @@ in
             num-workspaces = mkIf (isInt cfg.workspaces) cfg.workspaces;
           };
         
-          "org/gnome/settings-daemon/plugins/color" = mkIf cfg.nightLight.enable {
-            night-light-enable = true;
+          "org/gnome/settings-daemon/plugins/color" = {
+            night-light-enable = cfg.nightLight.enable;
             night-light-temperature = "uint32 ${toString cfg.nightLight.temperature}";
           };
         };
