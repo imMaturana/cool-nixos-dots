@@ -1,8 +1,4 @@
-{ config
-, ...
-}:
-
-{
+{config, ...}: {
   programs.zathura = {
     enable = true;
     options = {
@@ -25,8 +21,8 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "application/pdf" = [ "zathura.desktop" ];
-      "application/epub" = [ "zathura.desktop" ];
+      "application/pdf" = ["zathura.desktop"];
+      "application/epub" = ["zathura.desktop"];
     };
   };
 }

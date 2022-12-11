@@ -1,13 +1,11 @@
-{ inputs
-, pkgs
-, config
-, ...
-}:
-
-let
-  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
-in
 {
+  inputs,
+  pkgs,
+  config,
+  ...
+}: let
+  inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+in {
   imports = [
     ./mpv.nix
     ./ncmpcpp.nix
@@ -25,7 +23,10 @@ in
     };
 
     iconTheme = {
-      name = if config.colorscheme.kind == "light" then "Papirus" else "Papirus-Dark";
+      name =
+        if config.colorscheme.kind == "light"
+        then "Papirus"
+        else "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
   };

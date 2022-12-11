@@ -1,9 +1,8 @@
-{ pkgs
-, config
-, ...
-}:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   programs.qutebrowser = {
     enable = true;
 
@@ -75,4 +74,3 @@
     };
   };
 }
-

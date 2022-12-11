@@ -1,8 +1,4 @@
-{ config
-, ...
-}:
-
-{
+{config, ...}: {
   services.swayidle = {
     enable = true;
 
@@ -18,10 +14,12 @@
       }
     ];
 
-    events = [{
-      event = "before-sleep";
-      command = "swaylock";
-    }];
+    events = [
+      {
+        event = "before-sleep";
+        command = "swaylock";
+      }
+    ];
   };
 
   programs.swaylock.settings = {

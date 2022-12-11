@@ -1,132 +1,133 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }:
-
-with lib;
-
-let
+with lib; let
   pamixer = "${pkgs.pamixer}/bin/pamixer";
   mpc = "${pkgs.mpc_cli}/bin/mpc";
   jq = "${pkgs.jq}/bin/jq";
-in
-{
+in {
   programs.waybar = {
     enable = true;
 
-    settings = [{
-      output = config.home.primaryMonitor;
-      position = "top";
-      layer = "top";
-      
-      modules-left = optionals config.wayland.windowManager.sway.enable [
-        "custom/scratchpad"
-        "sway/workspaces"
-        "sway/mode"
-      ] ++ optionals config.wayland.windowManager.hyprland.enable [
-        "hyprland/window"
-      ];
-      
-      modules-right = [
-        "tray"
-        "idle_inhibitor"
-        "pulseaudio"
-        "battery"
-        "network"
-        "clock"
-      ];
+    settings = [
+      {
+        output = config.home.primaryMonitor;
+        position = "top";
+        layer = "top";
 
-      "tray" = {
-        icon-size = 16;
-        spacing = 8;
-      };
+        modules-left =
+          optionals config.wayland.windowManager.sway.enable [
+            "custom/scratchpad"
+            "sway/workspaces"
+            "sway/mode"
+          ]
+          ++ optionals config.wayland.windowManager.hyprland.enable [
+            "hyprland/window"
+          ];
 
-      "network" = {
-        format = "🐑 {essid}";
-        format-disconnect = "Disconnected";
-        format-alt = "⬆️ {bandwidthUpBits} ⬇️ {bandwidthDownBits}";
-        tooltip-format = "{ifname}";
-        max-length = 40;
-        interval = 1;
-      };
+        modules-right = [
+          "tray"
+          "idle_inhibitor"
+          "pulseaudio"
+          "battery"
+          "network"
+          "clock"
+        ];
 
-      "idle_inhibitor" = {
-        format = "{icon}";
-        format-icons = {
-          activated = "🔓";
-          deactivated = "🔒";
+        "tray" = {
+          icon-size = 16;
+          spacing = 8;
         };
-      };
 
-      "pulseaudio" = {
-        format = "🐹 {volume}%";
-        format-muted = "🐹 Muted";
-        format-icons = {
-          default = [ "奄" "奔" "墳" ];
+        "network" = {
+          format = "🐑 {essid}";
+          format-disconnect = "Disconnected";
+          format-alt = "⬆️ {bandwidthUpBits} ⬇️ {bandwidthDownBits}";
+          tooltip-format = "{ifname}";
+          max-length = 40;
+          interval = 1;
         };
-        on-click = "${pamixer} -t";
-        on-click-right = "${pamixer} --default-source -t";
-        scroll-step = 0.1;
-      };
 
-      "battery" = {
-        format = "🐻 {capacity}%";
-        format-plugged = "🐻 {capacity}%";
-        interval = 5;
-        states = {
-          warning = 30;
-          critical = 15;
+        "idle_inhibitor" = {
+          format = "{icon}";
+          format-icons = {
+            activated = "🔓";
+            deactivated = "🔒";
+          };
         };
-        max-length = 25;
-      };
 
-      "clock" = {
-        format = "🐢 {:%H:%M}";
-        format-alt = "🐢 {:%a, %d %b %Y}";
-        tooltip-format = "<big>{:%Y %B}</big>\n<small>{calendar}</small>";
-      };
-
-      "mpd" = {
-        format = "{stateIcon} {artist} - {title}";
-        format-disconnected = "ﱙ";
-        format-stopped = " Stopped";
-        state-icons = {
-          paused = "";
-          playing = "";
+        "pulseaudio" = {
+          format = "🐹 {volume}%";
+          format-muted = "🐹 Muted";
+          format-icons = {
+            default = ["奄" "奔" "墳"];
+          };
+          on-click = "${pamixer} -t";
+          on-click-right = "${pamixer} --default-source -t";
+          scroll-step = 0.1;
         };
-        max-length = 40;
-        interval = 1;
-        on-click = "${mpc} toggle";
-        on-click-right = "${mpc} stop";
-        on-scroll-up = "${mpc} volume +1";
-        on-scroll-down = "${mpc} volume -1";
-      };
 
-      # sway only
-      "sway/workspaces" = {
-        format = "{name}";
-      };
+        "battery" = {
+          format = "🐻 {capacity}%";
+          format-plugged = "🐻 {capacity}%";
+          interval = 5;
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          max-length = 25;
+        };
 
-      "custom/scratchpad" = {
-        interval = 1;
-        exec = "swaymsg -t get_tree | ${jq} 'recurse(.nodes[]) | first(select(.name==\"__i3_scratch\")) | .floating_nodes | length'";
-        format = "  {}";
-        tooltip = false;
-        on-click = "swaymsg 'scratchpad show'";
-        on-click-right = "swaymsg 'move scratchpad'";
-      };
-      
-      # hyprland
-      "hyprland/window" = {
-        format = "{}";
-      };
+        "clock" = {
+          format = "🐢 {:%H:%M}";
+          format-alt = "🐢 {:%a, %d %b %Y}";
+          tooltip-format = "<big>{:%Y %B}</big>\n<small>{calendar}</small>";
+        };
 
-      # river only
-      "river/tags" = {
-        num-tags = 9;
-      };
-    }];
+        "mpd" = {
+          format = "{stateIcon} {artist} - {title}";
+          format-disconnected = "ﱙ";
+          format-stopped = " Stopped";
+          state-icons = {
+            paused = "";
+            playing = "";
+          };
+          max-length = 40;
+          interval = 1;
+          on-click = "${mpc} toggle";
+          on-click-right = "${mpc} stop";
+          on-scroll-up = "${mpc} volume +1";
+          on-scroll-down = "${mpc} volume -1";
+        };
+
+        # sway only
+        "sway/workspaces" = {
+          format = "{name}";
+        };
+
+        "custom/scratchpad" = {
+          interval = 1;
+          exec = "swaymsg -t get_tree | ${jq} 'recurse(.nodes[]) | first(select(.name==\"__i3_scratch\")) | .floating_nodes | length'";
+          format = "  {}";
+          tooltip = false;
+          on-click = "swaymsg 'scratchpad show'";
+          on-click-right = "swaymsg 'move scratchpad'";
+        };
+
+        # hyprland
+        "hyprland/window" = {
+          format = "{}";
+        };
+
+        # river only
+        "river/tags" = {
+          num-tags = 9;
+        };
+      }
+    ];
 
     style = with config.colorscheme.colors; ''
       /* reset */

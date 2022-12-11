@@ -1,11 +1,9 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   fonts = {
     fontconfig.defaultFonts = {
-      emoji = [ "Noto Color Emoji" ];
-      monospace = [ "Noto Sans" ];
-      serif = [ "Noto Serif" ];
+      emoji = ["Noto Color Emoji"];
+      monospace = ["Noto Sans"];
+      serif = ["Noto Serif"];
     };
 
     fonts = with pkgs; [

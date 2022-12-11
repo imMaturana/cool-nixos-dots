@@ -1,10 +1,9 @@
-{ pkgs
-, config
-, ...
-}:
-
 {
-  home.packages = [ pkgs.mpc_cli ];
+  pkgs,
+  config,
+  ...
+}: {
+  home.packages = [pkgs.mpc_cli];
 
   services.mpd = {
     enable = true;

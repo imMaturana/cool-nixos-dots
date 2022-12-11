@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   programs.nixvim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
@@ -65,7 +67,10 @@
 
     plugins = {
       bufferline.enable = true;
-      lualine = { enable = true; theme = "base16"; };
+      lualine = {
+        enable = true;
+        theme = "base16";
+      };
       goyo.enable = true;
       telescope.enable = true;
 
@@ -112,6 +117,6 @@
       nvim-base16
     ];
   };
-  
+
   home.sessionVariables.EDITOR = "nvim";
 }

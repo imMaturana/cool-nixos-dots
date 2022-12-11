@@ -1,8 +1,10 @@
-{ pkgs, lib, config, ... }:
-
-with lib;
-
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
   cfg = config.fontProfiles;
 
   fontModule = {
@@ -14,8 +16,7 @@ let
       type = types.package;
     };
   };
-in
-{
+in {
   options.fontProfiles = {
     regular = fontModule;
     monospace = fontModule;

@@ -1,9 +1,8 @@
-{ inputs
-, pkgs
-, ...
-}:
-
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./shared
     ./features/hyprland.nix
@@ -12,7 +11,7 @@
     ./features/vscode-vim.nix
     ./features/emacs.nix
   ];
-  
+
   home.monitors = [
     "eDP-1"
   ];
@@ -22,27 +21,27 @@
     element-desktop
     libreoffice
   ];
-  
+
   fontProfiles = {
     regular = {
       family = "JetBrains Mono";
       package = pkgs.jetbrains-mono;
     };
-    
+
     monospace = {
       family = "JetBrainsMono Nerd Font";
       package = pkgs.nerdfonts.override {
-        fonts = [ "JetBrainsMono" ];
+        fonts = ["JetBrainsMono"];
       };
     };
   };
-  
+
   programs.vscode = {
     userSettings = {
       workbench.colorTheme = "Gruvbox Dark Medium";
     };
   };
-  
+
   colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
   wallpaper = pkgs.fetchurl {
     url = "https://w.wallhaven.cc/full/g8/wallhaven-g876zd.jpg";

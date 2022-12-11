@@ -1,10 +1,9 @@
-{ self
-, pkgs
-, lib
-, ...
-}:
-
 {
+  self,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./hardware.nix
     ./locale.nix
@@ -18,9 +17,9 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-  
+
   networking.networkmanager.enable = true;
-  
+
   # nix
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";

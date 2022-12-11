@@ -1,10 +1,5 @@
-{ lib,
- ...
-}:
-
-with lib;
-
-{
+{lib, ...}:
+with lib; {
   programs.helix = {
     enable = true;
 
@@ -30,10 +25,15 @@ with lib;
       };
     };
 
-    languages = [{
-      name = "python";
-      language-server = { command = "pyright-langserver"; args = [ "--stdio" ]; };
-      config = {};
-    }];
+    languages = [
+      {
+        name = "python";
+        language-server = {
+          command = "pyright-langserver";
+          args = ["--stdio"];
+        };
+        config = {};
+      }
+    ];
   };
 }

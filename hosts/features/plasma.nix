@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./wayland.nix
     ./noto-fonts.nix
@@ -19,7 +17,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
     libsForQt5.kaccounts-integration
     libsForQt5.kaccounts-providers
     libsForQt5.kio

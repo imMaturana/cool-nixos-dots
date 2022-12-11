@@ -1,12 +1,10 @@
-{ pkgs
-, lib
-, config
-, ...
-}:
-
-with lib;
-
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; {
   programs.gpg = {
     enable = true;
     settings = {
@@ -25,7 +23,7 @@ with lib;
       allow-emacs-pinentry
     '';
   };
-  
+
   home.packages =
     optional config.programs.emacs.enable pkgs.pinentry.emacs;
 }

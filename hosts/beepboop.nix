@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./shared
     ./features/laptop.nix
@@ -13,22 +11,24 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.kernelModules = [ "xhci_pci" "ahci" "uas" "sd_mod" ];
-  boot.blacklistedKernelModules = [ "nouveau" ];
+  boot.initrd.kernelModules = ["xhci_pci" "ahci" "uas" "sd_mod"];
+  boot.blacklistedKernelModules = ["nouveau"];
 
   fileSystems."/boot" = {
     device = "/dev/sda1";
     fsType = "vfat";
   };
 
-  swapDevices = [{
-    device = "/dev/sda2";
-  }];
+  swapDevices = [
+    {
+      device = "/dev/sda2";
+    }
+  ];
 
   fileSystems."/" = {
     device = "/dev/sda3";
     fsType = "btrfs";
-    options = [ "subvol=@nixos" ];
+    options = ["subvol=@nixos"];
   };
 
   networking.hostName = "beepboop";
@@ -44,6 +44,6 @@
     light.enable = true;
     dconf.enable = true;
   };
-  
+
   system.stateVersion = "22.05";
 }

@@ -1,14 +1,11 @@
-{ lib
-, config
-, ...
-}:
-
-with lib;
-
-let
-  ms = config.home.monitors;
-in
 {
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  ms = config.home.monitors;
+in {
   options = {
     home = {
       monitors = mkOption {
@@ -20,14 +17,14 @@ in
           ]
         '';
       };
-      
+
       primaryMonitor = mkOption {
         type = types.str;
         internal = true;
       };
     };
   };
-  
+
   config = {
     home.primaryMonitor = head ms;
   };

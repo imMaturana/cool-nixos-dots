@@ -1,25 +1,26 @@
-{ config
-, ...
-}:
-
-let
+{config, ...}: let
   inherit (config.fontProfiles.monospace) family;
-in
-{
+in {
   programs.alacritty = {
     enable = true;
     settings = {
       window = {
-        padding = { x = 6; y = 6; };
+        padding = {
+          x = 6;
+          y = 6;
+        };
       };
 
       font = {
-        normal = { inherit family; };
-        bold = { inherit family; };
-        italic = { inherit family; };
-        bold_italic = { inherit family; };
+        normal = {inherit family;};
+        bold = {inherit family;};
+        italic = {inherit family;};
+        bold_italic = {inherit family;};
         size = 7.0;
-        offset = { x = 0; y = 0; };
+        offset = {
+          x = 0;
+          y = 0;
+        };
       };
 
       colors = with config.colorscheme; {

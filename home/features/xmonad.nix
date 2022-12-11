@@ -1,27 +1,26 @@
-{ inputs
-, pkgs
-, config
-, ...
-}:
-
-let
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}: let
   inherit (config.colorscheme) colors;
-  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
+  inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
 
   pamixer = "${pkgs.pamixer}/bin/pamixer";
   feh = "${pkgs.feh}/bin/feh";
   xmobar = "${config.programs.xmobar.package}/bin/xmobar";
-in
-{
-  imports = [ ./x11.nix ];
-  
+in {
+  imports = [./x11.nix];
+
   xsession.windowManager.xmonad = {
     enable = true;
     enableContribAndExtras = true;
-    extraPackages = hpkgs: with hpkgs; [
-      xmonad-contrib
-      xmonad-extras
-    ];
+    extraPackages = hpkgs:
+      with hpkgs; [
+        xmonad-contrib
+        xmonad-extras
+      ];
 
     config = pkgs.writeText "xmonad.hs" ''
       -- Imports {{{
@@ -83,7 +82,7 @@ in
       -- Workspaces
       myWorkspaces :: [WorkspaceId]
       myWorkspaces = map show [1..9]
-      
+
       -- XPConfig
       myXPConfig :: XPConfig
       myXPConfig = def
@@ -94,13 +93,13 @@ in
 
         , promptBorderWidth = 3
         , borderColor = "#${colors.base02}"
-       
+
         , position = CenteredAt { xpCenterY = 0.5, xpWidth = 0.5 }
         }
 
       -- Keys
       myKeys = \c -> mkKeymap c $
-        
+
         -- launch a terminal
         [ ("M-S-<Return>", spawn $ XMonad.terminal c)
 
@@ -232,7 +231,7 @@ in
 
       main = do
         h <- spawnPipe "${xmobar}"
-        
+
         xmonad $ ewmhFullscreen $ ewmh $ docks $ def
           { modMask = myModMask
           , terminal = myTerminal
@@ -297,10 +296,10 @@ in
         }
     '';
   };
-  
+
   home.file.".xinitrc".text = ''
     #!/usr/bin/env bash
-    
+
     exec dbus-run-session xmonad
   '';
 
@@ -315,7 +314,10 @@ in
     };
 
     iconTheme = {
-      name = if config.colorscheme.kind == "light" then "Papirus" else "Papirus-Dark";
+      name =
+        if config.colorscheme.kind == "light"
+        then "Papirus"
+        else "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
   };

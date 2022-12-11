@@ -1,9 +1,5 @@
-{ pkgs
-, ...
-}:
-
-{
-  imports = [ ./vscode.nix ];
+{pkgs, ...}: {
+  imports = [./vscode.nix];
 
   programs.vscode = {
     userSettings = {

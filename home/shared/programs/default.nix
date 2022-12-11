@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./direnv.nix
     ./fish.nix
@@ -12,7 +10,7 @@
     ./syncthing.nix
     ./tmux.nix
   ];
-  
+
   home.packages = with pkgs; [
     amfora
     keepassxc
@@ -24,7 +22,7 @@
     ffmpeg
     ripgrep
   ];
-  
+
   programs = {
     home-manager.enable = true;
     jq.enable = true;
@@ -37,7 +35,7 @@
       enable = true;
       config.theme = "base16";
     };
-    
+
     exa = {
       enable = true;
       enableAliases = true;

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   users.users.maturana = {
     isNormalUser = true;
     extraGroups = [

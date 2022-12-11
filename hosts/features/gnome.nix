@@ -1,9 +1,8 @@
-{ pkgs
-, lib
-, ...
-}:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./wayland.nix
     ./flatpak.nix

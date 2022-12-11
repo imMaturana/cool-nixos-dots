@@ -1,11 +1,10 @@
-{ pkgs
-, config
-, ...
-}:
-
-let
+{
+  pkgs,
+  config,
+  ...
+}: let
   inherit (config.colorscheme) colors;
-  
+
   fuzzel-menu = pkgs.writeScriptBin "fuzzel_menu" ''
     ${pkgs.fuzzel}/bin/fuzzel -p 'run ' \
     -f '${config.fontProfiles.regular.family}:size=10' -i '${config.gtk.iconTheme.name}' \
@@ -14,8 +13,7 @@ let
     -C '${colors.base0D}ff' -m '${colors.base08}ff' \
     -s '${colors.base02}ff' -S '${colors.base06}ff'
   '';
-in
-{
+in {
   imports = [
     ./fnott.nix
     ./foot.nix
@@ -24,7 +22,7 @@ in
     ./wlsunset.nix
     ./wm.nix
   ];
-  
+
   home.packages = with pkgs; [
     fuzzel
     fuzzel-menu
