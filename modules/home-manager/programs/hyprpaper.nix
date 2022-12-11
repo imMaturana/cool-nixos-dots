@@ -14,6 +14,12 @@ in
     programs.hyprpaper = {
       enable = mkEnableOption "Enable hyprpaper";
       
+      package = mkOption {
+        type = types.package;
+        default = pkgs.hyprpaper;
+        defaultText = literalExpression "pkgs.hyprland";
+      };
+      
       monitors = mkOption {
         type = types.listOf (types.submodule {
           options = {
@@ -41,7 +47,7 @@ in
   };
   
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ hyprpaper ];
+    home.packages = [ cfg.package ];
     
     xdg.configFile."hypr/hyprpaper.conf" = mkIf (cfg.monitors != [ ]) {
       text =
