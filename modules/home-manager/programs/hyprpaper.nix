@@ -46,11 +46,11 @@ in
     xdg.configFile."hypr/hyprpaper.conf" = mkIf (cfg.monitors != [ ]) {
       text =
         let
-          wallpapers = lib.unique (map (m: m.wallpaper) cfg.monitors);
+          wallpapers = unique (map (m: m.wallpaper) cfg.monitors);
         in
         ''
-          ${lib.concatStringsSep "\n" (map (w: "preload=${w}") wallpapers)}
-          ${lib.concatStringsSep "\n" (map (m: "wallpaper=${m.name},${m.wallpaper}") cfg.monitors)}
+          ${concatStringsSep "\n" (map (w: "preload=${w}") wallpapers)}
+          ${concatStringsSep "\n" (map (m: "wallpaper=${m.name},${m.wallpaper}") cfg.monitors)}
         '';
     };
   };
