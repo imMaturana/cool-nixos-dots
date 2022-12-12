@@ -99,11 +99,11 @@ in {
 
   programs.hyprpaper = {
     enable = true;
-    monitors = [
-      {
-        name = config.home.primaryMonitor;
-        wallpaper = config.wallpaper;
-      }
-    ];
+    monitors =
+      map (m: {
+        name = m;
+        inherit (config) wallpaper;
+      })
+      config.home.monitors;
   };
 }
