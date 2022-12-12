@@ -53,6 +53,10 @@ in {
       # startup
       exec-once=waybar
       exec=hyprpaper
+      
+      # window rules
+      windowrule=float,^(mpv)$
+      windowrule=float,^(org.keepassxc.KeePassXC)$
 
       # mouse
       bindm=SUPER,mouse:272,movewindow
