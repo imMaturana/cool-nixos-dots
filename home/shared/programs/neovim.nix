@@ -97,13 +97,41 @@
           pyright.enable = true;
           zls.enable = true;
           gopls.enable = true;
+          elixirls.enable = true;
         };
       };
 
-      coq-nvim = {
-        enable = true; # broken
-        installArtifacts = true;
+      lspkind = {
+        enable = true;
+        cmp.ellipsisChar = "...";
+        cmp.menu = {
+          buffer = "[Buffer]";
+          nvim_lsp = "[LSP]";
+          luasnip = "[LuaSnip]";
+          nvim_lua = "[Lua]";
+          latex_symbols = "[Latex]";
+        };
+        cmp.after = ''
+          function(entry, vim_item, kind)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. strings[1] .. " "
+            kind.menu = "   " .. strings[2]
+            return kind
+          end
+        '';
       };
+
+      nvim-cmp = {
+        enable = true;
+        sources = [{name = "nvim_lsp";}];
+        mappingPresets = ["insert"];
+        mapping = {
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+        };
+        formatting.fields = ["kind" "abbr" "menu"];
+      };
+
+      lsp-lines.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
