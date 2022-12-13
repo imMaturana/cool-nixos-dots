@@ -90,6 +90,11 @@ in {
         )
         9)}
 
+      # media
+      bind=,XF86AudioPlay,exec,mpc toggle
+      bind=,XF86AudioNext,exec,mpc next
+      bind=,XF86AudioPrev,exec,mpc prev
+
       # volume
       bind=,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bind=,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
