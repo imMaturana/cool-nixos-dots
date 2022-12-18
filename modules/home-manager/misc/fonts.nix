@@ -13,7 +13,7 @@ with lib; let
     };
 
     package = mkOption {
-      type = types.package;
+      type = types.nullOr types.package;
     };
   };
 in {
