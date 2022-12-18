@@ -1,7 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     amberol
   ];
+
+  fontProfiles.regular = lib.mkForce {
+    family = "Noto Sans";
+  };
 
   desktopEnvironment.gnome = {
     enable = true;
