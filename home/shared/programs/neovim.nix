@@ -71,11 +71,13 @@
         enable = true;
         theme = "base16";
       };
-      goyo.enable = true;
-      telescope.enable = true;
+
+      telescope = {
+        enable = true;
+      };
 
       nvim-tree = {
-        enable = true;
+        enable = false;
         filters.custom = [
           ".git"
         ];
