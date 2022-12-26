@@ -2,17 +2,17 @@
   pkgs,
   config,
   ...
-}: let
-  emacsPackage = pkgs.emacsPackagesFor pkgs.emacsPgtkNativeComp;
-in {
+}:
+{
   home.packages = [pkgs.emacs-all-the-icons-fonts];
 
   programs.emacs = {
     enable = true;
-    package = emacsPackage.emacsWithPackages (epkgs:
-      with epkgs; [
-        vterm
-      ]);
+    package = pkgs.emacsPgtk;
+
+    extraPackages = epkgs: with epkgs; [
+      vterm
+    ];
   };
 
   services.emacs = {
