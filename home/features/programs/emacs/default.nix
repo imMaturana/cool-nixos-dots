@@ -2,39 +2,38 @@
   pkgs,
   config,
   ...
-}:
-
-{
+}: {
   home.packages = [pkgs.emacs-all-the-icons-fonts];
 
   programs.emacs = {
     enable = true;
     package = pkgs.emacsPgtk;
 
-    extraPackages = epkgs: with epkgs; [
-      # ui
-      doom-modeline
-      base16-theme
-      all-the-icons
-      dashboard
-      vertico
+    extraPackages = epkgs:
+      with epkgs; [
+        # ui
+        doom-modeline
+        base16-theme
+        all-the-icons
+        dashboard
+        vertico
 
-      # programming
-      nix-mode
-      go-mode
-      zig-mode
-      lsp-pyright
+        # programming
+        nix-mode
+        go-mode
+        zig-mode
+        lsp-pyright
 
-      # lsp
-      orderless
-      corfu
-      eglot
+        # lsp
+        orderless
+        corfu
+        eglot
 
-      # tools
-      direnv
-      magit
-      vterm
-    ];
+        # tools
+        direnv
+        magit
+        vterm
+      ];
 
     extraConfig = ''
       (progn ; ui

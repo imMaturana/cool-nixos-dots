@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
+    ../shared
     ./alacritty.nix
-    ./wm.nix
   ];
 
   home.packages = with pkgs; [

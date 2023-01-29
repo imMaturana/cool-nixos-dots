@@ -8,7 +8,10 @@ with lib; let
   inherit (config.wayland.windowManager.sway.config) modifier;
   inherit (config.colorscheme) colors;
 in {
-  imports = [./wayland.nix];
+  imports = [
+    ../shared
+    ../shared/wm/wayland
+  ];
 
   home.packages = with pkgs; [
     sway-contrib.grimshot

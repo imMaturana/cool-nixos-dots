@@ -5,11 +5,14 @@
 }: {
   imports = [
     ./shared
-    ./features/hyprland.nix
-    ./features/podman.nix
-    ./features/helix.nix
-    ./features/vscode-vim.nix
-    ./features/emacs.nix
+    ./features/desktop/gnome
+    ./features/services/podman
+    ./features/programs/helix
+
+    ./features/programs/vscode
+    ./features/programs/vscode/vim.nix
+
+    # ./features/programs/emacs
   ];
 
   home.monitors = [
@@ -36,11 +39,11 @@
     };
   };
 
-  programs.vscode = {
-    userSettings = {
-      workbench.colorTheme = "Gruvbox Dark Medium";
-    };
-  };
+  # programs.vscode = {
+    # userSettings = {
+      # workbench.colorTheme = "Gruvbox Dark Medium";
+    # };
+  # };
 
   colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
   wallpaper = pkgs.fetchurl {

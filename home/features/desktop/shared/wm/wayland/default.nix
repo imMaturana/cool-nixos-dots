@@ -15,12 +15,12 @@
   '';
 in {
   imports = [
+    ../shared
     ./fnott.nix
     ./foot.nix
     ./swayidle.nix
     ./waybar.nix
     ./wlsunset.nix
-    ./wm.nix
   ];
 
   home.packages = with pkgs; [

@@ -7,7 +7,10 @@
 with lib; let
   inherit (config.colorscheme) colors;
 in {
-  imports = [./wayland.nix];
+  imports = [
+    ../shared
+    ../shared/wm/wayland
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;

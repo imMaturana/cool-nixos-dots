@@ -11,7 +11,10 @@
   feh = "${pkgs.feh}/bin/feh";
   xmobar = "${config.programs.xmobar.package}/bin/xmobar";
 in {
-  imports = [./x11.nix];
+  imports = [
+    ../shared
+    ../shared/wm/x11
+  ];
 
   xsession.windowManager.xmonad = {
     enable = true;

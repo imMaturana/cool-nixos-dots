@@ -3,6 +3,8 @@
   lib,
   ...
 }: {
+  imports = [../shared];
+
   home.packages = with pkgs; [
     amberol
   ];
