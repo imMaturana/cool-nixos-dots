@@ -12,7 +12,7 @@
   xmobar = "${config.programs.xmobar.package}/bin/xmobar";
 in {
   imports = [
-    ../shared
+    ../shared/desktop
     ../shared/wm/x11
   ];
 

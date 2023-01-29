@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   programs.vscode = {
     userSettings = {
+      editor.lineNumbers = "relative";
+
       vim = {
         easymotion = true;
         incsearch = true;

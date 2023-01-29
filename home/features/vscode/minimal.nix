@@ -9,8 +9,6 @@
     };
 
     editor = {
-      lineNumbers = "relative";
-
       minimap.enabled = false;
       scrollbar = {
         horizontal = "hidden";

@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  imports = [../shared];
+  imports = [../shared/desktop];
 
   home.packages = with pkgs; [
     amberol
