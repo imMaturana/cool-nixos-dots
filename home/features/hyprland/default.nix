@@ -93,6 +93,10 @@ in {
         )
         9)}
 
+      # scratchpad
+      bind=SUPERSHIFT,S,movetoworkspace,special
+      bind=SUPER,S,togglespecialworkspace,
+
       # media
       bind=,XF86AudioPlay,exec,mpc toggle
       bind=,XF86AudioNext,exec,mpc next
