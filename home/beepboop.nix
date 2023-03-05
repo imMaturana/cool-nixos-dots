@@ -6,13 +6,9 @@
   imports = [
     ./shared
 
-    ./features/hyprland
+    ./features/sway
     ./features/podman
     ./features/helix
-
-    ./features/vscode
-    ./features/vscode/minimal.nix
-    #./features/vscode/vim.nix
   ];
 
   home.monitors = [
@@ -37,10 +33,6 @@
         fonts = ["JetBrainsMono"];
       };
     };
-  };
-
-  programs.vscode.userSettings = {
-    workbench.colorTheme = "Gruvbox Dark Medium";
   };
 
   colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
