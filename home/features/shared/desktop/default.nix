@@ -1,1 +1,1 @@
-{imports = [./firefox.nix ./librewolf.nix];}
+{imports = [./librewolf.nix];}
