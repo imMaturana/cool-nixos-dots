@@ -59,7 +59,7 @@
       specialArgs = {inherit self inputs;};
     };
 
-    homeConfigurations."maturana@beepboop" = mkHome {
+    homeConfigurations."beepboop" = mkHome {
       pkgs = self.outputs.nixosConfigurations.beepboop.pkgs;
       modules = [./home/beepboop.nix];
       extraSpecialArgs = {inherit self inputs;};
