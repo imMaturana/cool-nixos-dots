@@ -6,7 +6,6 @@
     ./features/wayland.nix
     ./features/flatpak.nix
     ./features/firewall.nix
-    ./features/gaming.nix
     ./users/maturana.nix
   ];
 
