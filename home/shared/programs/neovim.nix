@@ -28,12 +28,6 @@
 
     maps = {
       normal = {
-        "<C-b>" = {
-          action = ":NvimTreeToggle<CR>";
-          noremap = true;
-          silent = true;
-        };
-
         # switch between buffers
         "<C-j>" = {
           action = ":bnext<CR>";
