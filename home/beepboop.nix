@@ -6,7 +6,7 @@
   imports = [
     ./shared
 
-    ./features/sway
+    ./features/hyprland
     ./features/podman
     ./features/helix
   ];

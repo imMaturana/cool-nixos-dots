@@ -35,16 +35,16 @@ in {
       }
 
       general {
-        gaps_in=10
-        gaps_out=15
-        border_size=2.5
+        gaps_in=5
+        gaps_out=10
+        border_size=3
         col.active_border=0xff${colors.base0B}
         col.inactive_border=0xff${colors.base00}
         cursor_inactive_timeout=4
       }
 
       decoration {
-        rounding=5
+        rounding=3
 
         drop_shadow=1
         shadow_ignore_window=1
