@@ -120,9 +120,6 @@
       vim-go
       julia-vim
 
-      # git
-      diffview-nvim
-
       # themes
       {
         plugin = nvim-base16;
