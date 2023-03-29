@@ -27,7 +27,7 @@
   fileSystems."/" = {
     device = "/dev/sda3";
     fsType = "btrfs";
-    options = ["subvol=@nixos"];
+    options = ["subvol=@"];
   };
 
   networking.hostName = "beepboop";
