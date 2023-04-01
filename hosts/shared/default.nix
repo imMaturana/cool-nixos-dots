@@ -10,7 +10,6 @@
     ./programs.nix
     ./services.nix
     ./environment.nix
-    ./cachix.nix
   ];
 
   boot.loader = {
