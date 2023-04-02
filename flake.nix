@@ -57,7 +57,9 @@
           emacs.overlay
 
           # TODO issue with nixvim, tmp fix
-          (_: _: let inherit (nixvim.inputs) nixpkgs; in {
+          (_: _: let
+            inherit (nixvim.inputs) nixpkgs;
+          in {
             inherit (nixpkgs.legacyPackages.${system}) vimPlugins;
           })
         ];
