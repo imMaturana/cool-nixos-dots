@@ -56,7 +56,7 @@
           nur.overlay
           emacs.overlay
 
-          # TODO issue with nixvim, tmp fix
+          # TODO temporary fix to nixvim, remove if backporting be implemented
           (_: _: let
             inherit (nixvim.inputs) nixpkgs;
           in {
