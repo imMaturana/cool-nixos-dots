@@ -65,6 +65,11 @@ in
                 mountpoint = "/var";
                 mountOptions = sharedMountOptions;
               };
+
+              "@snapshots" = {
+                mountpoint = "/.snapshots";
+                mountOptions = sharedMountOptions;
+              };
             };
           };
         }
