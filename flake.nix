@@ -14,21 +14,26 @@
   };
 
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixos-22.11;
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
 
-    # flakes
-    hm.url = "github:nix-community/home-manager/release-22.11";
-    hm.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-22.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    emacs.url = github:nix-community/emacs-overlay;
-    emacs.inputs.nixpkgs.follows = "nixpkgs";
+    emacs = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    hyprland.url = github:hyprwm/Hyprland/v0.19.1beta;
+    hyprland = {
+      url = "github:hyprwm/Hyprland/v0.19.1beta";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-colors.url = "github:Misterio77/nix-colors/3.0.0";
 
     nixvim.url = "github:pta2002/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
   };
@@ -36,7 +41,7 @@
   outputs = {
     self,
     nixpkgs,
-    hm,
+    home-manager,
     ...
   } @ inputs: let
     eachSupportedSystem = nixpkgs.lib.genAttrs [
@@ -54,7 +59,7 @@
       });
 
     mkHost = nixpkgs.lib.nixosSystem;
-    mkHome = hm.lib.homeManagerConfiguration;
+    mkHome = home-manager.lib.homeManagerConfiguration;
   in {
     homeManagerModules = import ./modules/home-manager;
     nixosModules = import ./modules/host;
@@ -72,7 +77,7 @@
     };
 
     homeConfigurations."beepboop" = mkHome {
-      pkgs = self.outputs.nixosConfigurations.beepboop.pkgs;
+      pkgs = self.outputs.nixosConfigurations."beepboop".pkgs;
       modules = [./home/beepboop.nix];
       extraSpecialArgs = {inherit self inputs;};
     };
