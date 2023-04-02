@@ -30,6 +30,30 @@
     options = ["subvol=@"];
   };
 
+  fileSystems."/nix" = {
+    device = "/dev/sda3";
+    fsType = "btrfs";
+    options = ["subvol=@nix"];
+  };
+
+  fileSystems."/var" = {
+    device = "/dev/sda3";
+    fsType = "btrfs";
+    options = ["subvol=@var"];
+  };
+
+  fileSystems."/home" = {
+    device = "/dev/sda3";
+    fsType = "btrfs";
+    options = ["subvol=@home"];
+  };
+
+  fileSystems."/.snapshots" = {
+    device = "/dev/sda3";
+    fsType = "btrfs";
+    options = ["subvol=@snapshots"];
+  };
+
   networking.hostName = "beepboop";
 
   networking.interfaces = {
@@ -44,5 +68,5 @@
     dconf.enable = true;
   };
 
-  system.stateVersion = "22.05";
+  system.stateVersion = "22.11";
 }
