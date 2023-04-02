@@ -2,9 +2,12 @@
   self,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
+    inputs.disko.nixosModules.disko
+
     ./hardware.nix
     ./locale.nix
     ./programs.nix

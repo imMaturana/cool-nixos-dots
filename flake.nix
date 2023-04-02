@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-colors.url = "github:Misterio77/nix-colors/3.0.0";
 
     nixvim.url = "github:pta2002/nixvim";
@@ -79,7 +84,7 @@
 
     nixosConfigurations."beepboop" = mkHost {
       pkgs = legacyPackages.x86_64-linux;
-      modules = [./hosts/beepboop.nix];
+      modules = [./hosts/beepboop];
       specialArgs = {inherit self inputs;};
     };
 
