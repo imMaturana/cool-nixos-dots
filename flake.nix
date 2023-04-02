@@ -15,7 +15,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-22.11";
@@ -34,10 +33,7 @@
 
     nix-colors.url = "github:Misterio77/nix-colors/3.0.0";
 
-    nixvim = {
-      url = "github:pta2002/nixvim";
-      inputs.nixpkgs.follows = "unstable";
-    };
+    nixvim.url = "github:pta2002/nixvim";
 
     nur.url = "github:nix-community/NUR";
   };
@@ -61,13 +57,8 @@
           emacs.overlay
 
           # TODO issue with nixvim, tmp fix
-          (_: _: rec {
-            unstable = import inputs.unstable {
-              inherit system;
-              config = {allowUnfree = true;};
-            };
-
-            inherit (unstable) vimPlugins;
+          (_: _: let inherit (nixvim.inputs) nixpkgs; in {
+            inherit (nixpkgs.legacyPackages.${system}) vimPlugins;
           })
         ];
       });
