@@ -90,7 +90,7 @@
 
     homeConfigurations."beepboop" = mkHome {
       pkgs = self.outputs.nixosConfigurations."beepboop".pkgs;
-      modules = [./home/beepboop.nix];
+      modules = [./home/beepboop];
       extraSpecialArgs = {inherit self inputs;};
     };
   };

@@ -4,11 +4,10 @@
   ...
 }: {
   imports = [
-    ./shared
-
-    ./features/hyprland
-    ./features/podman
-    ./features/helix
+    ../shared
+    ../features/hyprland
+    ../features/podman
+    ../features/helix
   ];
 
   home.monitors = [
