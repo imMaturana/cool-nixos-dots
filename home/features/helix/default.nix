@@ -3,7 +3,7 @@
     enable = true;
 
     settings = {
-      theme = "base16";
+      theme = "base16-${config.colorscheme.slug}";
 
       editor = {
         line-number = "relative";
@@ -35,7 +35,7 @@
       }
     ];
     
-    themes."base16" = builtins.fromTOML (builtins.readFile
+    themes."base16-${config.colorscheme.slug}" = builtins.fromTOML (builtins.readFile
       "${inputs.base16-helix}/themes/base16-${config.colorscheme.slug}.toml");
   };
 }
