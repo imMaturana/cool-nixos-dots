@@ -41,6 +41,12 @@
     nixvim.url = "github:pta2002/nixvim";
 
     nur.url = "github:nix-community/NUR";
+    
+    # non-flake
+    base16-helix = {
+      url = "github:tinted-theming/base16-helix";
+      flake = false;
+    };
   };
 
   outputs = {

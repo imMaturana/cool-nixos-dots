@@ -1,10 +1,9 @@
-{lib, ...}:
-with lib; {
+{config, inputs, ...}: {
   programs.helix = {
     enable = true;
 
     settings = {
-      theme = mkDefault "gruvbox";
+      theme = "base16";
 
       editor = {
         line-number = "relative";
@@ -35,5 +34,8 @@ with lib; {
         config = {};
       }
     ];
+    
+    themes."base16" = builtins.fromTOML (builtins.readFile
+      "${inputs.base16-helix}/themes/base16-${config.colorscheme.slug}.toml");
   };
 }
