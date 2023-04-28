@@ -122,4 +122,19 @@ in {
       })
       config.home.monitors;
   };
+
+  services.swayidle.timeouts = [
+    {
+      timeout = 300;
+      command = "swaylock";
+    }
+    {
+      timeout = 305;
+      command = "hyprctl dispatch dpms off";
+      resumeCommand = "hyprctl dispatch dpms on";
+    }
+  ];
+
+  systemd.user.services.fnott.Install.WantedBy = ["hyprland-session.target"];
+  systemd.user.services.swayidle.Install.WantedBy = ["hyprland-session.target"];
 }

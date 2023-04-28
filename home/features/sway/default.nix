@@ -235,5 +235,17 @@ in {
     '';
   };
 
+  services.swayidle.timeouts = [
+    {
+      timeout = 300;
+      command = "swaylock";
+    }
+    {
+      timeout = 600;
+      command = "swaymsg 'output * dpms off'";
+      resumeCommand = "swaymsg 'output * dpms on'";
+    }
+  ];
+
   systemd.user.services.fnott.Install.WantedBy = ["sway-session.target"];
 }
