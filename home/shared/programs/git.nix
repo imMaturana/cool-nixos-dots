@@ -2,7 +2,7 @@
   programs.git = {
     enable = true;
     userName = "imMaturana";
-    userEmail = "git@maturanei.anonaddy.com";
+    userEmail = "maturana.dev@protonmail.com";
     extraConfig = {
       init.defaultBranch = "main";
     };
