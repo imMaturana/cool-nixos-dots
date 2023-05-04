@@ -15,7 +15,6 @@
   '';
 in {
   imports = [
-    ../shared
     ./fnott.nix
     ./foot.nix
     ./swayidle.nix

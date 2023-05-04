@@ -5,7 +5,7 @@
 }: {
   imports = [
     ../shared
-    ../features/hyprland
+    ../features/desktop/hyprland
     ../features/podman
     ../features/helix
   ];

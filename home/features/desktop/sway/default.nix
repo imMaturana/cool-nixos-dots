@@ -9,7 +9,8 @@ with lib; let
   inherit (config.colorscheme) colors;
 in {
   imports = [
-    ../shared/desktop
+    ../shared
+    ../shared/wm
     ../shared/wm/wayland
   ];
 

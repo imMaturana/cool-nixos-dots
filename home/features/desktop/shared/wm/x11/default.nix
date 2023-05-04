@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ../shared
     ./alacritty.nix
   ];
 
