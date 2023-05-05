@@ -1,27 +1,4 @@
-{pkgs, ...}: {
-  imports = [
-    ./direnv.nix
-    ./fish.nix
-    ./git.nix
-    ./gpg.nix
-    ./lazygit.nix
-    ./neovim.nix
-    ./syncthing.nix
-    ./tmux.nix
-  ];
-
-  home.packages = with pkgs; [
-    amfora
-    keepassxc
-    yt-dlp
-    zip
-    unzip
-    cryptsetup
-    imagemagick
-    ffmpeg
-    ripgrep
-  ];
-
+{
   programs = {
     home-manager.enable = true;
     jq.enable = true;

@@ -12,8 +12,20 @@
     inputs.nix-colors.homeManagerModule
     inputs.nixvim.homeManagerModules.nixvim
 
+    # misc
     ./xdg.nix
-    ./programs
+
+    # programs
+    ./packages.nix
+    ./programs.nix
+    ./direnv.nix
+    ./fish.nix
+    ./git.nix
+    ./gpg.nix
+    ./lazygit.nix
+    ./neovim.nix
+    ./syncthing.nix
+    ./tmux.nix
   ];
 
   home = {
