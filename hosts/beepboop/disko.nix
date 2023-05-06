@@ -16,7 +16,6 @@ in
       format = "gpt";
       partitions = [
         {
-          type = "partition";
           name = "EFI";
           start = "1MiB";
           end = "512MiB";
@@ -28,7 +27,6 @@ in
           };
         }
         {
-          type = "partition";
           name = "swap";
           start = "512MiB";
           end = "4G";
@@ -39,7 +37,6 @@ in
           };
         }
         {
-          type = "partition";
           name = "root";
           start = "4G";
           end = "100%";
