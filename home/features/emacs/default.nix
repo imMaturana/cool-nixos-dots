@@ -2,7 +2,10 @@
   pkgs,
   config,
   ...
-}: {
+}:
+let
+  nix-theme = pkgs.callPackage ./nix-theme.nix {inherit config;};
+in {
   home.packages = [pkgs.emacs-all-the-icons-fonts];
 
   programs.emacs = {
@@ -13,7 +16,7 @@
       with epkgs; [
         # ui
         doom-modeline
-        base16-theme
+        nix-theme
         all-the-icons
         dashboard
         vertico
@@ -30,6 +33,7 @@
         eglot
 
         # tools
+        org
         direnv
         magit
         vterm
@@ -56,7 +60,6 @@
         (setq-default tab-width 4)
 
         ;; theme
-        (require 'base16-theme)
         (load-theme 'base16-${config.colorscheme.slug} t)
 
         ;; modeline
