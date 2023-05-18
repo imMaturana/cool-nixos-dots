@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "base16-helix": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1681134988,
-        "narHash": "sha256-Ens/gcDX8fNkJGOXbyIe3ZRiiYafmIDZnl79lWiNfXQ=",
-        "owner": "tinted-theming",
-        "repo": "base16-helix",
-        "rev": "8e61aa320cc519ee0e953ec6f764f810f00d1ba1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tinted-theming",
-        "repo": "base16-helix",
-        "type": "github"
-      }
-    },
     "base16-schemes": {
       "flake": false,
       "locked": {
@@ -430,7 +414,6 @@
     },
     "root": {
       "inputs": {
-        "base16-helix": "base16-helix",
         "disko": "disko",
         "emacs": "emacs",
         "home-manager": "home-manager",

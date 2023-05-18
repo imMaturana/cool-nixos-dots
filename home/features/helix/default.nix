@@ -1,4 +1,4 @@
-{config, inputs, ...}: {
+{config, ...}: {
   programs.helix = {
     enable = true;
 
@@ -35,7 +35,8 @@
       }
     ];
     
-    themes."base16-${config.colorscheme.slug}" = builtins.fromTOML (builtins.readFile
-      "${inputs.base16-helix}/themes/base16-${config.colorscheme.slug}.toml");
+    themes."base16-${config.colorscheme.slug}" = import ./theme.nix {
+      colors = config.colorscheme.colors;
+    };
   };
 }
