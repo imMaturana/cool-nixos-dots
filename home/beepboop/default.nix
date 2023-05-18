@@ -7,6 +7,7 @@
     ../shared
     ../features/desktop/hyprland
     ../features/podman
+    ../features/nvim
     ../features/helix
   ];
 

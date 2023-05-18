@@ -23,7 +23,6 @@
     ./git.nix
     ./gpg.nix
     ./lazygit.nix
-    ./neovim.nix
     ./syncthing.nix
     ./tmux.nix
   ];
