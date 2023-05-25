@@ -31,6 +31,11 @@ in {
         defaultText = literalExpression "light";
       };
 
+      wallpaper = mkOption {
+        type = types.nullOr types.path;
+        default = null;
+      };
+
       bindings = mkOption {
         type = types.attrsOf types.str;
         default = {};
@@ -81,7 +86,7 @@ in {
           "org/gnome/desktop/background" = rec {
             primary-color = "#000000";
             secondary-color = "#000000";
-            picture-uri = mkIf (!isNull config.wallpaper) "file://${config.wallpaper}";
+            picture-uri = mkIf (!isNull cfg.wallpaper) "file://${cfg.wallpaper}";
             picture-uri-dark = picture-uri;
           };
 

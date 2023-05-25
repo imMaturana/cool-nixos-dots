@@ -114,14 +114,17 @@
       lsp-lines.enable = true;
     };
 
-    extraPlugins = with pkgs.vimPlugins; [
-      vim-go
-      julia-vim
-
-    ] ++ [(import ./theme.nix {
-      plugin = nvim-base16;
-      colors = config.colorscheme.colors;
-    })];
+    extraPlugins = with pkgs.vimPlugins;
+      [
+        vim-go
+        julia-vim
+      ]
+      ++ [
+        (import ./theme.nix {
+          plugin = nvim-base16;
+          colors = config.colorscheme.colors;
+        })
+      ];
   };
 
   home.sessionVariables.EDITOR = "nvim";

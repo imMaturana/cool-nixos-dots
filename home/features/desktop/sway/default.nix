@@ -28,9 +28,14 @@ in {
     xwayland = true;
 
     config = {
-      output = {
-        "*".bg = "${config.wallpaper} fill";
-      };
+      output = builtins.listToAttrs (map (m: {
+        inherit (m) name;
+        value = {
+          mode = "${toString m.width}x${toString m.height}";
+          pos = "${toString m.position.x} ${toString m.position.y}";
+          bg = "${m.wallpaper} fill";
+        };
+      }) config.home.monitors);
 
       input = {
         "type:keyboard" = {

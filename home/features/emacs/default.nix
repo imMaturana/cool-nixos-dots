@@ -2,8 +2,7 @@
   pkgs,
   config,
   ...
-}:
-let
+}: let
   nix-theme = pkgs.callPackage ./nix-theme.nix {inherit config;};
 in {
   home.packages = [pkgs.emacs-all-the-icons-fonts];

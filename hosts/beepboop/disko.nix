@@ -1,13 +1,11 @@
-{ ... }:
-let
+{...}: let
   sharedMountOptions = [
     "rw"
     "noatime"
     "compress=lzo"
     "space_cache=v2"
   ];
-in
-{
+in {
   disko.devices.disk.sda = {
     device = "/dev/sda";
     type = "disk";

@@ -34,7 +34,7 @@
         config = {};
       }
     ];
-    
+
     themes."base16-${config.colorscheme.slug}" = import ./theme.nix {
       colors = config.colorscheme.colors;
     };

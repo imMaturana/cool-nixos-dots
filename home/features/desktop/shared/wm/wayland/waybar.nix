@@ -14,7 +14,7 @@ in {
 
     settings = [
       {
-        output = config.home.primaryMonitor;
+        output = config.home.primaryMonitor.name;
         position = "top";
         layer = "top";
 

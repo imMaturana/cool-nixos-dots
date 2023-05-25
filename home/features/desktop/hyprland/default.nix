@@ -17,9 +17,12 @@ in {
     enable = true;
     extraConfig = ''
       ${concatStrings (map (
-          m: ''
-            monitor=${m},preferred,auto,1
-            workspace=${m},1
+          monitor: let
+            inherit (monitor) name width height position;
+            pos = position;
+          in ''
+            monitor=${name},${toString width}x${toString height},${toString pos.x}x${toString pos.y},1
+            workspace=${name},1
           ''
         )
         config.home.monitors)}
@@ -117,11 +120,7 @@ in {
   programs.hyprpaper = {
     enable = true;
     monitors =
-      map (m: {
-        name = m;
-        inherit (config) wallpaper;
-      })
-      config.home.monitors;
+      map (m: {inherit (m) name wallpaper;}) config.home.monitors;
   };
 
   services.swayidle.timeouts = [
