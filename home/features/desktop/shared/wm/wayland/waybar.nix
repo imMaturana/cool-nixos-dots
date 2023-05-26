@@ -148,7 +148,7 @@ in {
         font-family: '${config.fontProfiles.monospace.family}';
         font-size: 1.25em;
         background: #${base00};
-        color: #${base06};{
+        color: #${base06};
       }
 
       /* defaults */
