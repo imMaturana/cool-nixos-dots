@@ -1,12 +1,13 @@
 {
   pkgs,
+  lib,
   config,
   ...
 }: let
   inherit (config.colorscheme) colors;
 
   fuzzel-menu = pkgs.writeScriptBin "fuzzel_menu" ''
-    ${pkgs.fuzzel}/bin/fuzzel -p 'run ' \
+    ${lib.getExe pkgs.fuzzel} -p 'run ' \
     -f '${config.fontProfiles.regular.family}:size=10' -i '${config.gtk.iconTheme.name}' \
     -r 2 -B 3 -y 20 -P 10 \
     -b '${colors.base00}ff' -t '${colors.base06}ff' \

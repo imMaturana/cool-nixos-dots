@@ -4,10 +4,12 @@
   config,
   ...
 }:
-with lib; let
-  pamixer = "${pkgs.pamixer}/bin/pamixer";
-  mpc = "${pkgs.mpc_cli}/bin/mpc";
-  jq = "${pkgs.jq}/bin/jq";
+let
+  inherit (lib) optionals getExe;
+
+  pamixer = getExe pkgs.pamixer;
+  mpc = getExe pkgs.mpc_cli;
+  jq = getExe pkgs.jq;
 in {
   programs.waybar = {
     enable = true;
@@ -146,7 +148,7 @@ in {
         font-family: '${config.fontProfiles.monospace.family}';
         font-size: 1.25em;
         background: #${base00};
-        color: #${base06};
+        color: #${base06};{
       }
 
       /* defaults */

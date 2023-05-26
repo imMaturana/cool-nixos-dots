@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   ...
 }: {
@@ -68,8 +69,8 @@
 
     keyBindings = {
       normal = {
-        ",v" = "spawn ${pkgs.mpv}/bin/mpv {url}";
-        ",y" = "spawn ${pkgs.yt-dlp}/bin/yt-dlp {url} -o ${config.xdg.userDirs.videos}/%(title)s.%(ext)s";
+        ",v" = "spawn ${lib.getExe pkgs.mpv} {url}";
+        ",y" = "spawn ${lib.getExe pkgs.yt-dlp} {url} -o ${config.xdg.userDirs.videos}/%(title)s.%(ext)s";
       };
     };
   };

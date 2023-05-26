@@ -1,15 +1,16 @@
 {
   inputs,
   pkgs,
+  lib,
   config,
   ...
 }: let
   inherit (config.colorscheme) colors;
   inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
 
-  pamixer = "${pkgs.pamixer}/bin/pamixer";
-  feh = "${pkgs.feh}/bin/feh";
-  xmobar = "${config.programs.xmobar.package}/bin/xmobar";
+  pamixer = lib.getExe pkgs.pamixer;
+  feh = lib.getExe pkgs.feh;
+  xmobar = lib.getExe config.programs.xmobar.package;
 in {
   imports = [
     ../shared
