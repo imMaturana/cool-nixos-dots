@@ -17,6 +17,11 @@
     enable = true;
     themeVariant = "dark";
 
+    monospaceFont = {
+      inherit (config.fontProfiles.monospace) family;
+      size = 10;
+    };
+
     bindings = {
       "<Ctrl><Alt>T" = "kgx";
     };

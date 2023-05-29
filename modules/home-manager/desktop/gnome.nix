@@ -31,6 +31,21 @@ in {
         defaultText = literalExpression "light";
       };
 
+      monospaceFont = mkOption {
+        type = types.nullOr (types.submoudule {
+          options = {
+            family = mkOption {
+              type = types.str;
+            };
+
+            size = mkOption {
+              type = types.float;
+            };
+          };
+        });
+        default = null;
+      };
+
       wallpaper = mkOption {
         type = types.nullOr types.path;
         default = null;
@@ -91,7 +106,8 @@ in {
           };
 
           "org/gnome/desktop/interface" = {
-            monospace-font-name = "${config.fontProfiles.monospace.family} 10";
+            monospace-font-name = mkIf (!isNull cfg.monospaceFont)
+              "${cfg.monospaceFont.family} ${toString cfg.monospaceFont.size}";
             color-scheme =
               if cfg.themeVariant == "light"
               then "light"
