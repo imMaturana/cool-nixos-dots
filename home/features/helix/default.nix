@@ -24,16 +24,15 @@
       };
     };
 
-    languages = [
-      {
-        name = "python";
+    languages = {
+      python = {
         language-server = {
           command = "pyright-langserver";
           args = ["--stdio"];
         };
         config = {};
-      }
-    ];
+      };
+    };
 
     themes."base16-${config.colorscheme.slug}" = import ./theme.nix {
       colors = config.colorscheme.colors;

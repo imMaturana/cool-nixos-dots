@@ -14,10 +14,10 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -27,7 +27,7 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.19.1beta";
+      url = "github:hyprwm/Hyprland/v0.26.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -38,7 +38,7 @@
 
     nix-colors.url = "github:Misterio77/nix-colors/4.0.0";
 
-    nixvim.url = "github:pta2002/nixvim";
+    nixvim.url = "github:pta2002/nixvim/cf6a614e8b89eea8f989ef6103debe65984a1fd5";
 
     nur.url = "github:nix-community/NUR";
   };
@@ -57,16 +57,9 @@
       import nixpkgs {
         inherit system;
         config = {allowUnfree = true;};
-        overlays = with inputs; [
-          nur.overlay
-          emacs.overlay
-
-          # TODO temporary fix to nixvim, remove if backporting be implemented
-          (_: _: let
-            inherit (nixvim.inputs) nixpkgs;
-          in {
-            inherit (nixpkgs.legacyPackages.${system}) vimPlugins;
-          })
+        overlays = [
+          inputs.nur.overlay
+          inputs.emacs.overlay
         ];
       });
 
