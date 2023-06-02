@@ -60,8 +60,8 @@
     mkHost = nixpkgs.lib.nixosSystem;
     mkHome = home-manager.lib.homeManagerConfiguration;
   in {
-    homeManagerModules = import ./modules/home-manager;
-    nixosModules = import ./modules/host;
+    homeManagerModules = import ./home/modules;
+    nixosModules = import ./hosts/modules;
 
     devShells = eachSupportedSystem (system: {
       default = import ./shell.nix {pkgs = legacyPackages.${system};};
