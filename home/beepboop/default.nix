@@ -13,15 +13,17 @@
 
   colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
 
-  home.monitors = [{
-    name = "eDP-1";
-    width = 1920;
-    height = 1080;
-    wallpaper = pkgs.fetchurl {
-      url = "https://w.wallhaven.cc/full/g8/wallhaven-g876zd.jpg";
-      sha256 = "sha256-5NJfjpmO02XHa41eSxidm0uzPMe2Iay2IYZz4BMyINk=";
-    };
-  }];
+  home.monitors = [
+    {
+      name = "eDP-1";
+      width = 1920;
+      height = 1080;
+      wallpaper = pkgs.fetchurl {
+        url = "https://w.wallhaven.cc/full/g8/wallhaven-g876zd.jpg";
+        sha256 = "sha256-5NJfjpmO02XHa41eSxidm0uzPMe2Iay2IYZz4BMyINk=";
+      };
+    }
+  ];
 
   home.packages = with pkgs; [
     distrobox

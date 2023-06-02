@@ -3,8 +3,7 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   inherit (lib) optionals getExe;
 
   pamixer = getExe pkgs.pamixer;

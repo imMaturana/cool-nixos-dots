@@ -106,7 +106,8 @@ in {
           };
 
           "org/gnome/desktop/interface" = {
-            monospace-font-name = mkIf (!isNull cfg.monospaceFont)
+            monospace-font-name =
+              mkIf (!isNull cfg.monospaceFont)
               "${cfg.monospaceFont.family} ${toString cfg.monospaceFont.size}";
             color-scheme =
               if cfg.themeVariant == "light"
