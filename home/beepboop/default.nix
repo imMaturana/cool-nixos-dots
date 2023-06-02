@@ -30,14 +30,14 @@
 
   fontProfiles = {
     regular = {
-      family = "JetBrains Mono";
-      package = pkgs.jetbrains-mono;
+      family = "Noto Sans";
+      package = pkgs.noto-fonts;
     };
 
     monospace = {
-      family = "JetBrainsMono Nerd Font";
+      family = "CaskaydiaCove Nerd Font";
       package = pkgs.nerdfonts.override {
-        fonts = ["JetBrainsMono"];
+        fonts = ["CascadiaCode"];
       };
     };
   };
