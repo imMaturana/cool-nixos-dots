@@ -3,8 +3,16 @@
   lib,
   config,
   ...
-}:
-with lib; {
+}: let
+  pinentry =
+    if config.gtk.enable then {
+      packages = [ pkgs.pinentry-gnome pkgs.gcr ];
+      name = "gnome3";
+    } else {
+      packages = [ pkgs.pinentry-curses ];
+      name = "curses";
+    };
+in {
   programs.gpg = {
     enable = true;
     settings = {
@@ -18,12 +26,8 @@ with lib; {
 
   services.gpg-agent = {
     enable = true;
-    pinentryFlavor = lib.mkDefault "curses";
-    extraConfig = optionalString config.programs.emacs.enable ''
-      allow-emacs-pinentry
-    '';
+    pinentryFlavor = pinentry.name;
   };
 
-  home.packages =
-    optional config.programs.emacs.enable pkgs.pinentry.emacs;
+  home.packages = pinentry.packages;
 }
