@@ -115,7 +115,7 @@ in {
 
   services.emacs = {
     enable = true;
-    package = config.programs.emacs.finalPackage;
+    client.enable = true;
   };
 
   programs.git.ignores = [
