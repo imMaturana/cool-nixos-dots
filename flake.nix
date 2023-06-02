@@ -21,11 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    emacs = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprland = {
       url = "github:hyprwm/Hyprland/v0.26.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,7 +54,6 @@
         config = {allowUnfree = true;};
         overlays = [
           inputs.nur.overlay
-          inputs.emacs.overlay
         ];
       });
 

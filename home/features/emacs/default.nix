@@ -9,7 +9,7 @@ in {
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsPgtk;
+    package = pkgs.emacs-gtk;
 
     extraPackages = epkgs:
       with epkgs; [
@@ -119,8 +119,9 @@ in {
   };
 
   programs.git.ignores = [
-    "#*#"
+    "\\#*\\#"
     "*~"
-    ".*#"
+    ".\\#*"
+    ".*\\#"
   ];
 }
