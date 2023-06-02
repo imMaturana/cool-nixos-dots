@@ -49,7 +49,7 @@ in {
         (setq truncate-lines t)
 
         ;; font
-        (set-face-attribute 'default nil :font "${config.fontProfiles.monospace.family}")
+        (set-face-attribute 'default nil :font "${config.fontProfiles.monospace.family}" :height 120)
         (add-to-list 'default-frame-alist '(font . "${config.fontProfiles.monospace.family}-10"))
 
         ;; line numbers
