@@ -44,11 +44,11 @@
     home-manager,
     ...
   } @ inputs: let
-    eachSupportedSystem = nixpkgs.lib.genAttrs [
+    eachSystem = nixpkgs.lib.genAttrs [
       "x86_64-linux"
     ];
 
-    legacyPackages = eachSupportedSystem (system:
+    legacyPackages = eachSystem (system:
       import nixpkgs {
         inherit system;
         config = {allowUnfree = true;};
@@ -63,11 +63,11 @@
     homeManagerModules = import ./home/modules;
     nixosModules = import ./hosts/modules;
 
-    devShells = eachSupportedSystem (system: {
+    devShells = eachSystem (system: {
       default = import ./shell.nix {pkgs = legacyPackages.${system};};
     });
 
-    formatter = eachSupportedSystem (system: legacyPackages.${system}.alejandra);
+    formatter = eachSystem (system: legacyPackages.${system}.alejandra);
 
     nixosConfigurations."beepboop" = mkHost {
       pkgs = legacyPackages.x86_64-linux;
