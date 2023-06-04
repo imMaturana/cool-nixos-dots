@@ -78,6 +78,10 @@ in {
         ;; IBuffer
         (global-set-key (kbd "C-x C-b") 'ibuffer))
 
+      (progn ; org
+        ;; Org Directory
+        (setq org-directory "${config.xdg.userDirs.documents}/Org"))
+
       (progn ; programming
         ;; python
         (require 'lsp-pyright)
