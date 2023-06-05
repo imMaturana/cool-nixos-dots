@@ -65,7 +65,7 @@
       zig.enable = true;
       emmet.enable = true;
       treesitter = {
-        enable = true; # https://github.com/pta2002/nixvim/issues/20
+        enable = true;
         nixGrammars = true;
       };
 
