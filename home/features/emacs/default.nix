@@ -80,7 +80,10 @@ in {
 
       (progn ; org
         ;; Org Directory
-        (setq org-directory "${config.xdg.userDirs.documents}/Org"))
+        (setq org-directory "${config.xdg.userDirs.documents}/Org")
+
+        ;; auto indent
+        (setq org-startup-indented t))
 
       (progn ; programming
         ;; python
