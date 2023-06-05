@@ -72,13 +72,13 @@
     nixosConfigurations."beepboop" = mkHost {
       pkgs = legacyPackages.x86_64-linux;
       modules = [./hosts/beepboop];
-      specialArgs = {inherit self inputs;};
+      specialArgs = inputs;
     };
 
     homeConfigurations."beepboop" = mkHome {
       pkgs = self.outputs.nixosConfigurations."beepboop".pkgs;
       modules = [./home/beepboop];
-      extraSpecialArgs = {inherit self inputs;};
+      extraSpecialArgs = inputs;
     };
   };
 }

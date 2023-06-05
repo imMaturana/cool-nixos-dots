@@ -1,16 +1,18 @@
 {
-  self,
-  inputs,
   pkgs,
   lib,
   config,
+  self,
+  hyprland,
+  nix-colors,
+  nixvim,
   ...
 }: {
   imports = [
     self.homeManagerModules
-    inputs.hyprland.homeManagerModules.default
-    inputs.nix-colors.homeManagerModule
-    inputs.nixvim.homeManagerModules.nixvim
+    hyprland.homeManagerModules.default
+    nix-colors.homeManagerModule
+    nixvim.homeManagerModules.nixvim
 
     # misc
     ./xdg.nix

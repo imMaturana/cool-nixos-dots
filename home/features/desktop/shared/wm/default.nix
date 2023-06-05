@@ -1,10 +1,10 @@
 {
-  inputs,
   pkgs,
   config,
+  nix-colors,
   ...
 }: let
-  inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+  inherit (nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
 in {
   imports = [
     ./mpv.nix

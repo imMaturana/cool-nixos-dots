@@ -1,12 +1,11 @@
 {
-  self,
   pkgs,
   lib,
-  inputs,
+  disko,
   ...
 }: {
   imports = [
-    inputs.disko.nixosModules.disko
+    disko.nixosModules.disko
 
     ./hardware.nix
     ./locale.nix

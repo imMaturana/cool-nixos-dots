@@ -1,6 +1,6 @@
 {
-  inputs,
   pkgs,
+  nix-colors,
   ...
 }: {
   imports = [
@@ -11,7 +11,7 @@
     ../features/helix
   ];
 
-  colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+  colorscheme = nix-colors.colorSchemes.gruvbox-dark-medium;
 
   home.monitors = [
     {
