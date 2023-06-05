@@ -33,7 +33,7 @@
 
     nix-colors.url = "github:Misterio77/nix-colors/4.0.0";
 
-    nixvim.url = "github:pta2002/nixvim/cf6a614e8b89eea8f989ef6103debe65984a1fd5";
+    nixvim.url = "github:pta2002/nixvim/nixos-23.05";
 
     nur.url = "github:nix-community/NUR";
   };
