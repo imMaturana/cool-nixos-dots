@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./wayland.nix
-    ./noto-fonts.nix
+    ../shared
   ];
 
   services.xserver = {

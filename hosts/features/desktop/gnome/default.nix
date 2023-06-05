@@ -4,9 +4,7 @@
   ...
 }: {
   imports = [
-    ./wayland.nix
-    ./flatpak.nix
-    ./noto-fonts.nix
+    ../shared
   ];
 
   services.xserver = {

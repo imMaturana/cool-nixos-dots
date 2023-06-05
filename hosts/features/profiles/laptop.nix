@@ -4,7 +4,9 @@
   config,
   ...
 }: {
-  imports = [./bluetooth.nix];
+  imports = [
+    ../networking/bluetooth.nix
+  ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [acpi_call];
   boot.kernelModules = ["acpi_call"];

@@ -1,11 +1,9 @@
 {pkgs, ...}: {
   imports = [
     ../shared
-    ../features/laptop.nix
-    ../features/noto-fonts.nix
-    ../features/wayland.nix
-    ../features/flatpak.nix
-    ../features/firewall.nix
+    ../features/desktop/hyprland
+    ../features/profiles/laptop.nix
+    ../features/networking/firewall.nix
     ../users/maturana.nix
 
     ./disko.nix
