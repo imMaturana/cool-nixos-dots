@@ -91,7 +91,7 @@ in {
       -- XPConfig
       myXPConfig :: XPConfig
       myXPConfig = def
-        { font = "xft:${config.fontProfiles.regular.family}:size=10"
+        { font = "xft:${config.home.fonts.regular.family}:size=10"
         , height = 30
         , bgColor = "#${colors.base00}"
         , fgColor = "#${colors.base06}"
@@ -270,7 +270,7 @@ in {
     enable = true;
     extraConfig = ''
       Config
-        { font = "${config.fontProfiles.regular.family} 10"
+        { font = "${config.home.fonts.regular.family} 10"
         , bgColor = "#${colors.base00}"
         , fgColor = "#${colors.base06}"
         , position = Top

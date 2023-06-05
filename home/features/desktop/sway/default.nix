@@ -58,7 +58,7 @@ in {
       };
 
       fonts = {
-        names = [config.fontProfiles.regular.family];
+        names = [config.home.fonts.regular.family];
         size = 10.0;
       };
 

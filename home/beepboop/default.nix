@@ -31,7 +31,7 @@
     element-desktop
   ];
 
-  fontProfiles = {
+  home.fonts = {
     regular = {
       family = "Noto Sans";
       package = pkgs.noto-fonts;

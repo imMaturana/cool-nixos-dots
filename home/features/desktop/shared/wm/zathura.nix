@@ -2,7 +2,7 @@
   programs.zathura = {
     enable = true;
     options = {
-      font = config.fontProfiles.regular.family;
+      font = config.home.fonts.regular.family;
       default-bg = "#${config.colorscheme.colors.base00}";
       default-fg = "#${config.colorscheme.colors.base06}";
       inputbar-bg = "#${config.colorscheme.colors.base00}";

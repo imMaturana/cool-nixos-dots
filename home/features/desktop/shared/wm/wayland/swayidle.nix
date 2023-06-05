@@ -11,7 +11,7 @@
   };
 
   programs.swaylock.settings = {
-    font = config.fontProfiles.regular.family;
+    font = config.home.fonts.regular.family;
     font-size = 16;
 
     color = config.colorscheme.colors.base00;

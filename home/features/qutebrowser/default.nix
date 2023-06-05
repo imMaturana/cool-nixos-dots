@@ -25,7 +25,7 @@
     };
 
     settings = {
-      fonts.default_family = config.fontProfiles.regular.family;
+      fonts.default_family = config.home.fonts.regular.family;
       fonts.default_size = "10pt";
       colors = with config.colorscheme.colors; {
         completion = {

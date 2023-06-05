@@ -6,7 +6,7 @@
         app-id = "foot";
         title = "foot";
         term = "xterm-256color";
-        font = "${config.fontProfiles.monospace.family}:size=7";
+        font = "${config.home.fonts.monospace.family}:size=7";
         pad = "10x10";
       };
 

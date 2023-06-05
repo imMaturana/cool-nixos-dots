@@ -3,9 +3,9 @@
   config,
   ...
 }: let
-  summary-font = "${config.fontProfiles.regular.family}:size=10:weight=bold";
-  title-font = "${config.fontProfiles.regular.family}:size=6:weight=bold:slant=italic";
-  body-font = "${config.fontProfiles.regular.family}:size=8:weight=regular";
+  summary-font = "${config.home.fonts.regular.family}:size=10:weight=bold";
+  title-font = "${config.home.fonts.regular.family}:size=6:weight=bold:slant=italic";
+  body-font = "${config.home.fonts.regular.family}:size=8:weight=regular";
   default-timeout = 5;
 in {
   home.packages = [pkgs.libnotify];

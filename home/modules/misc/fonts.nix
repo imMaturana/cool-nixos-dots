@@ -5,7 +5,7 @@
   ...
 }:
 with lib; let
-  cfg = config.fontProfiles;
+  cfg = config.home.fonts;
 
   fontModule = {
     family = mkOption {
@@ -17,7 +17,7 @@ with lib; let
     };
   };
 in {
-  options.fontProfiles = {
+  options.home.fonts = {
     regular = fontModule;
     monospace = fontModule;
   };

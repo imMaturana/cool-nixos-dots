@@ -9,7 +9,7 @@
     amberol
   ];
 
-  fontProfiles.regular = lib.mkForce {
+  home.fonts.regular = lib.mkForce {
     family = "Noto Sans";
   };
 
@@ -18,7 +18,7 @@
     themeVariant = "dark";
 
     monospaceFont = {
-      inherit (config.fontProfiles.monospace) family;
+      inherit (config.home.fonts.monospace) family;
       size = 10;
     };
 

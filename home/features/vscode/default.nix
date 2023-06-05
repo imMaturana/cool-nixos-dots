@@ -10,7 +10,7 @@ with lib; {
     package = pkgs.vscodium-fhs;
     userSettings = {
       editor = {
-        fontFamily = "'${config.fontProfiles.monospace.family}', monospace";
+        fontFamily = "'${config.home.fonts.monospace.family}', monospace";
         fontLigatures = true;
         fontSize = 14;
 

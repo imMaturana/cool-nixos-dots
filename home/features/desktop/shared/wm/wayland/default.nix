@@ -8,7 +8,7 @@
 
   fuzzel-menu = pkgs.writeScriptBin "fuzzel_menu" ''
     ${lib.getExe pkgs.fuzzel} -p 'run ' \
-    -f '${config.fontProfiles.regular.family}:size=10' -i '${config.gtk.iconTheme.name}' \
+    -f '${config.home.fonts.regular.family}:size=10' -i '${config.gtk.iconTheme.name}' \
     -r 2 -B 3 -y 20 -P 10 \
     -b '${colors.base00}ff' -t '${colors.base06}ff' \
     -C '${colors.base0D}ff' -m '${colors.base08}ff' \
