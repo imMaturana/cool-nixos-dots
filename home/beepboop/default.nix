@@ -9,9 +9,10 @@
     ../features/podman
     ../features/nvim
     ../features/helix
+    ../features/emacs
   ];
 
-  colorscheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+  colorscheme = nix-colors.colorSchemes.catppuccin-mocha;
 
   home.monitors = [
     {

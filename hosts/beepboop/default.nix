@@ -15,14 +15,10 @@
   boot.initrd.kernelModules = ["xhci_pci" "ahci" "uas" "sd_mod"];
   boot.blacklistedKernelModules = ["nouveau"];
 
-  networking.hostName = "beepboop";
-
   networking.interfaces = {
     wlp3s0.useDHCP = true;
     enp2s0.useDHCP = true;
   };
-
-  nixpkgs.hostPlatform.system = "x86_64-linux";
 
   programs = {
     light.enable = true;

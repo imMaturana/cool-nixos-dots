@@ -16,7 +16,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
-    home-manager = {
+    home = {
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -41,24 +41,16 @@
   outputs = {
     self,
     nixpkgs,
-    home-manager,
     ...
   } @ inputs: let
-    eachSystem = nixpkgs.lib.genAttrs [
-      "x86_64-linux"
-    ];
+    lib = import ./lib.nix inputs;
 
-    legacyPackages = eachSystem (system:
-      import nixpkgs {
-        inherit system;
-        config = {allowUnfree = true;};
-        overlays = [
-          inputs.nur.overlay
-        ];
-      });
-
-    mkHost = nixpkgs.lib.nixosSystem;
-    mkHome = home-manager.lib.homeManagerConfiguration;
+    inherit
+      (lib)
+      eachSystem
+      legacyPackages
+      mkHost
+      ;
   in {
     homeManagerModules = import ./home/modules;
     nixosModules = import ./hosts/modules;
@@ -70,15 +62,8 @@
     formatter = eachSystem (system: legacyPackages.${system}.alejandra);
 
     nixosConfigurations."beepboop" = mkHost {
-      pkgs = legacyPackages.x86_64-linux;
-      modules = [./hosts/beepboop];
-      specialArgs = inputs;
-    };
-
-    homeConfigurations."beepboop" = mkHome {
-      pkgs = self.outputs.nixosConfigurations."beepboop".pkgs;
-      modules = [./home/beepboop];
-      extraSpecialArgs = inputs;
+      hostname = "beepboop";
+      system = "x86_64-linux";
     };
   };
 }

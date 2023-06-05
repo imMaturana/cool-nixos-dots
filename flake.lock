@@ -130,7 +130,7 @@
         "type": "github"
       }
     },
-    "home-manager": {
+    "home": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -371,7 +371,7 @@
     "root": {
       "inputs": {
         "disko": "disko",
-        "home-manager": "home-manager",
+        "home": "home",
         "hyprland": "hyprland",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs",

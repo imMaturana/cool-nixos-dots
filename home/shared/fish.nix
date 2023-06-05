@@ -2,10 +2,11 @@
   pkgs,
   lib,
   config,
+  osConfig,
   ...
 }: {
   programs.fish = {
-    enable = true;
+    enable = osConfig.programs.fish.enable;
 
     shellAliases = {
       mv = "mv -i";

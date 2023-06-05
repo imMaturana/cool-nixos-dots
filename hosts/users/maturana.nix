@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  shell = "fish";
+in {
   users.users.maturana = {
     isNormalUser = true;
     extraGroups = [
@@ -6,9 +8,9 @@
       "networkmanager"
       "video"
     ];
-    hashedPassword = "$6$BF3dksnCg0pChV0I$AHcbX8GO1ctXpzjAuvex1jpnzNe7V9w2iblLvPJQ2Vp2mG8qpuMGlZsIB/wVKZgTgQEml02k1qGeTwddlpraN0";
-    shell = pkgs.fish;
+    initialPassword = "";
+    shell = pkgs.${shell};
   };
 
-  programs.fish.enable = true;
+  programs.${shell}.enable = true;
 }
