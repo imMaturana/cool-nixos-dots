@@ -5,15 +5,9 @@ inputs: let
     home
     ;
 
-  inherit
-    (nixpkgs.lib)
-    nixosSystem
-    genAttrs
-    optionals
-    pathExists
-    ;
+  inherit (nixpkgs) lib;
 
-  eachSystem = genAttrs [
+  eachSystem = lib.genAttrs [
     "x86_64-linux"
   ];
 
@@ -30,7 +24,7 @@ in {
     hostname,
     system,
   }:
-    nixosSystem {
+    lib.nixosSystem {
       pkgs = legacyPackages.${system};
 
       modules =
@@ -42,7 +36,7 @@ in {
             nixpkgs.hostPlatform.system = system;
           }
         ]
-        ++ optionals (pathExists ./home/${hostname}) [
+        ++ lib.optionals (lib.pathExists ./home/${hostname}) [
           home.nixosModules.home-manager
 
           {
