@@ -1,4 +1,8 @@
-{pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../shared
   ];
@@ -7,7 +11,7 @@
 
   services.greetd = {
     enable = true;
-    settings.default_session = { 
+    settings.default_session = {
       command = "${lib.getExe pkgs.greetd.tuigreet} -c Hyprland";
     };
   };
