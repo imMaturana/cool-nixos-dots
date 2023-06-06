@@ -55,10 +55,6 @@
     homeManagerModules = import ./home/modules;
     nixosModules = import ./hosts/modules;
 
-    devShells = eachSystem (system: {
-      default = import ./shell.nix {pkgs = legacyPackages.${system};};
-    });
-
     formatter = eachSystem (system: legacyPackages.${system}.alejandra);
 
     nixosConfigurations."beepboop" = mkHost {
