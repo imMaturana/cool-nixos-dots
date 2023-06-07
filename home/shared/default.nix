@@ -35,9 +35,7 @@
 
     sessionVariables = {
       PATH = lib.makeBinPath [
-        "$PATH"
-        "$HOME/.local/bin"
-        "$HOME/.bin"
+        "$HOME/.local"
       ];
     };
 
