@@ -32,7 +32,6 @@
   home = {
     username = "maturana";
     homeDirectory = "/home/maturana";
-    stateVersion = "22.11";
 
     sessionVariables = {
       PATH = lib.makeBinPath [

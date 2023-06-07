@@ -23,6 +23,7 @@ in {
   mkHost = {
     hostname,
     system,
+    stateVersion,
   }:
     lib.nixosSystem {
       pkgs = legacyPackages.${system};
@@ -34,6 +35,8 @@ in {
           {
             networking.hostName = hostname;
             nixpkgs.hostPlatform.system = system;
+
+            system.stateVersion = stateVersion;
           }
         ]
         ++ lib.optionals (lib.pathExists ./home/${hostname}) [
@@ -42,7 +45,13 @@ in {
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.maturana = ./home/${hostname};
+
+            home-manager.users.maturana = lib.mkMerge [
+              ./home/${hostname}
+
+              {home.stateVersion = stateVersion;}
+            ];
+
             home-manager.extraSpecialArgs = inputs;
           }
         ];

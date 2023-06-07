@@ -22,6 +22,4 @@
     light.enable = true;
     dconf.enable = true;
   };
-
-  system.stateVersion = "22.11";
 }

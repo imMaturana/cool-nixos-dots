@@ -60,6 +60,7 @@
     nixosConfigurations."beepboop" = mkHost {
       hostname = "beepboop";
       system = "x86_64-linux";
+      stateVersion = "22.11";
     };
   };
 }
