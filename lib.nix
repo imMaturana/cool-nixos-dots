@@ -1,10 +1,5 @@
 inputs: let
-  inherit
-    (inputs)
-    nixpkgs
-    home
-    ;
-
+  inherit (inputs) nixpkgs hm;
   inherit (nixpkgs) lib;
 
   eachSystem = lib.genAttrs [
@@ -40,7 +35,7 @@ in {
           }
         ]
         ++ lib.optionals (lib.pathExists ./home/${hostname}) [
-          home.nixosModules.home-manager
+          hm.nixosModules.home-manager
 
           {
             home-manager.useGlobalPkgs = true;
