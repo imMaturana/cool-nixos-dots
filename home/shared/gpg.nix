@@ -1,20 +1,21 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: let
+{ pkgs
+, lib
+, config
+, ...
+}:
+let
   pinentry =
     if config.gtk.enable
     then {
-      packages = [pkgs.pinentry-gnome pkgs.gcr];
+      packages = [ pkgs.pinentry-gnome pkgs.gcr ];
       name = "gnome3";
     }
     else {
-      packages = [pkgs.pinentry-curses];
+      packages = [ pkgs.pinentry-curses ];
       name = "curses";
     };
-in {
+in
+{
   programs.gpg = {
     enable = true;
     settings = {

@@ -1,7 +1,6 @@
-{
-  pkgs,
-  config,
-  ...
+{ pkgs
+, config
+, ...
 }: {
   programs.nixvim = {
     enable = true;
@@ -103,12 +102,12 @@
 
       nvim-cmp = {
         enable = true;
-        sources = [{name = "nvim_lsp";}];
-        mappingPresets = ["insert"];
+        sources = [{ name = "nvim_lsp"; }];
+        mappingPresets = [ "insert" ];
         mapping = {
           "<CR>" = "cmp.mapping.confirm({ select = true })";
         };
-        formatting.fields = ["kind" "abbr" "menu"];
+        formatting.fields = [ "kind" "abbr" "menu" ];
       };
 
       lsp-lines.enable = true;

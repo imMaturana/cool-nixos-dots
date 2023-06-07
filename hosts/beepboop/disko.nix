@@ -1,11 +1,13 @@
-{...}: let
+{ ... }:
+let
   sharedMountOptions = [
     "rw"
     "noatime"
     "compress=lzo"
     "space_cache=v2"
   ];
-in {
+in
+{
   disko.devices.disk.sda = {
     device = "/dev/sda";
     type = "disk";
@@ -40,7 +42,7 @@ in {
           end = "100%";
           content = {
             type = "btrfs";
-            extraArgs = ["-f"];
+            extraArgs = [ "-f" ];
             subvolumes = {
               "@" = {
                 mountpoint = "/";

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -17,7 +17,7 @@
   services.xserver.displayManager.gdm.wayland = true;
 
   security.rtkit.enable = true;
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   hardware.pulseaudio.enable = false;
 

@@ -1,12 +1,12 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
+{ pkgs
+, lib
+, config
+, ...
 }:
 with lib; let
   inherit (config.colorscheme) colors;
-in {
+in
+{
   imports = [
     ../shared
     ../shared/wm
@@ -120,7 +120,7 @@ in {
   programs.hyprpaper = {
     enable = true;
     monitors =
-      map (m: {inherit (m) name wallpaper;}) config.home.monitors;
+      map (m: { inherit (m) name wallpaper; }) config.home.monitors;
   };
 
   services.swayidle.timeouts = [
@@ -135,6 +135,6 @@ in {
     }
   ];
 
-  systemd.user.services.fnott.Install.WantedBy = ["hyprland-session.target"];
-  systemd.user.services.swayidle.Install.WantedBy = ["hyprland-session.target"];
+  systemd.user.services.fnott.Install.WantedBy = [ "hyprland-session.target" ];
+  systemd.user.services.swayidle.Install.WantedBy = [ "hyprland-session.target" ];
 }

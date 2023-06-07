@@ -1,15 +1,16 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: let
+{ pkgs
+, lib
+, config
+, ...
+}:
+let
   inherit (lib) optionals getExe;
 
   pamixer = getExe pkgs.pamixer;
   mpc = getExe pkgs.mpc_cli;
   jq = getExe pkgs.jq;
-in {
+in
+{
   programs.waybar = {
     enable = true;
 
@@ -64,7 +65,7 @@ in {
           format = "🐹 {volume}%";
           format-muted = "🐹 Muted";
           format-icons = {
-            default = ["奄" "奔" "墳"];
+            default = [ "奄" "奔" "墳" ];
           };
           on-click = "${pamixer} -t";
           on-click-right = "${pamixer} --default-source -t";

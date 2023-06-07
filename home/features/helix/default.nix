@@ -1,4 +1,4 @@
-{config, ...}: {
+{ config, ... }: {
   programs.helix = {
     enable = true;
 
@@ -28,9 +28,9 @@
       python = {
         language-server = {
           command = "pyright-langserver";
-          args = ["--stdio"];
+          args = [ "--stdio" ];
         };
-        config = {};
+        config = { };
       };
     };
 

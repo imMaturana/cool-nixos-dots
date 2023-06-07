@@ -1,15 +1,15 @@
-{colors}: {
+{ colors }: {
   "attributes" = "#${colors.base09}";
   "comment" = {
     fg = "#${colors.base03}";
-    modifiers = ["italic"];
+    modifiers = [ "italic" ];
   };
   "constant" = "#${colors.base09}";
   "constant.character.escape" = "#${colors.base0C}";
   "constant.numeric" = "#${colors.base09}";
   "constructor" = "#${colors.base0D}";
   "debug" = "#${colors.base03}";
-  "diagnostic" = {modifiers = ["underlined"];};
+  "diagnostic" = { modifiers = [ "underlined" ]; };
   "diff.delta" = "#${colors.base09}";
   "diff.minus" = "#${colors.base08}";
   "diff.plus" = "#${colors.base0B}";
@@ -30,33 +30,33 @@
 
   "markup.bold" = {
     fg = "#${colors.base0A}";
-    modifiers = ["bold"];
+    modifiers = [ "bold" ];
   };
   "markup.heading" = "#${colors.base0D}";
   "markup.italic" = {
     fg = "#${colors.base0E}";
-    modifiers = ["italic"];
+    modifiers = [ "italic" ];
   };
   "markup.link.text" = "#${colors.base08}";
   "markup.link.url" = {
     fg = "#${colors.base09}";
-    modifiers = ["underlined"];
+    modifiers = [ "underlined" ];
   };
   "markup.list" = "#${colors.base08}";
   "markup.quote" = "#${colors.base0C}";
   "markup.raw" = "#${colors.base0B}";
-  "markup.strikethrough" = {modifiers = ["crossed_out"];};
+  "markup.strikethrough" = { modifiers = [ "crossed_out" ]; };
 
-  "diagnostic.hint" = {underline = {style = "curl";};};
-  "diagnostic.info" = {underline = {style = "curl";};};
-  "diagnostic.warning" = {underline = {style = "curl";};};
-  "diagnostic.error" = {underline = {style = "curl";};};
+  "diagnostic.hint" = { underline = { style = "curl"; }; };
+  "diagnostic.info" = { underline = { style = "curl"; }; };
+  "diagnostic.warning" = { underline = { style = "curl"; }; };
+  "diagnostic.error" = { underline = { style = "curl"; }; };
 
-  "ui.background" = {bg = "#${colors.base00}";};
+  "ui.background" = { bg = "#${colors.base00}"; };
   "ui.bufferline.active" = {
     fg = "#${colors.base00}";
     bg = "#${colors.base03}";
-    modifiers = ["bold"];
+    modifiers = [ "bold" ];
   };
   "ui.bufferline" = {
     fg = "#${colors.base04}";
@@ -64,11 +64,11 @@
   };
   "ui.cursor" = {
     fg = "#${colors.base0A}";
-    modifiers = ["reversed"];
+    modifiers = [ "reversed" ];
   };
   "ui.cursor.insert" = {
     fg = "#${colors.base0A}";
-    modifiers = ["revsered"];
+    modifiers = [ "revsered" ];
   };
   "ui.cursorline.primary" = {
     fg = "#${colors.base05}";
@@ -76,13 +76,13 @@
   };
   "ui.cursor.match" = {
     fg = "#${colors.base0A}";
-    modifiers = ["reversed"];
+    modifiers = [ "reversed" ];
   };
   "ui.cursor.select" = {
     fg = "#${colors.base0A}";
-    modifiers = ["reversed"];
+    modifiers = [ "reversed" ];
   };
-  "ui.gutter" = {bg = "#${colors.base00}";};
+  "ui.gutter" = { bg = "#${colors.base00}"; };
   "ui.help" = {
     fg = "#${colors.base06}";
     bg = "#${colors.base01}";
@@ -94,7 +94,7 @@
   "ui.linenr.selected" = {
     fg = "#${colors.base04}";
     bg = "#${colors.base01}";
-    modifiers = ["bold"];
+    modifiers = [ "bold" ];
   };
   "ui.menu" = {
     fg = "#${colors.base05}";
@@ -108,9 +108,9 @@
     fg = "#${colors.base01}";
     bg = "#${colors.base04}";
   };
-  "ui.popup" = {bg = "#${colors.base01}";};
-  "ui.selection" = {bg = "#${colors.base02}";};
-  "ui.selection.primary" = {bg = "#${colors.base02}";};
+  "ui.popup" = { bg = "#${colors.base01}"; };
+  "ui.selection" = { bg = "#${colors.base02}"; };
+  "ui.selection.primary" = { bg = "#${colors.base02}"; };
   "ui.statusline" = {
     fg = "#${colors.base04}";
     bg = "#${colors.base01}";
@@ -133,8 +133,8 @@
   };
   "ui.text" = "#${colors.base05}";
   "ui.text.focus" = "#${colors.base05}";
-  "ui.virtual.indent-guide" = {fg = "#${colors.base03}";};
-  "ui.virtual.inlay-hint" = {fg = "#${colors.base01}";};
-  "ui.virtual.ruler" = {bg = "#${colors.base01}";};
-  "ui.window" = {bg = "#${colors.base01}";};
+  "ui.virtual.indent-guide" = { fg = "#${colors.base03}"; };
+  "ui.virtual.inlay-hint" = { fg = "#${colors.base01}"; };
+  "ui.virtual.ruler" = { bg = "#${colors.base01}"; };
+  "ui.window" = { bg = "#${colors.base01}"; };
 }

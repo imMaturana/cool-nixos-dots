@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   programs.tmux = {
     enable = lib.mkDefault true;
     shortcut = "a";

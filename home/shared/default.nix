@@ -1,12 +1,11 @@
-{
-  pkgs,
-  lib,
-  config,
-  self,
-  hyprland,
-  nix-colors,
-  nixvim,
-  ...
+{ pkgs
+, lib
+, config
+, self
+, hyprland
+, nix-colors
+, nixvim
+, ...
 }: {
   imports = [
     self.homeManagerModules
@@ -42,7 +41,7 @@
     keyboard = {
       layout = "us";
       variant = "colemak";
-      options = ["caps:swapescape"];
+      options = [ "caps:swapescape" ];
     };
   };
 }

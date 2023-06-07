@@ -1,6 +1,6 @@
-{
-  plugin,
-  colors,
+{ plugin
+, colors
+,
 }: {
   inherit plugin;
   config = ''

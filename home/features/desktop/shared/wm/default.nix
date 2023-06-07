@@ -1,11 +1,12 @@
+{ pkgs
+, config
+, nix-colors
+, ...
+}:
+let
+  inherit (nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
+in
 {
-  pkgs,
-  config,
-  nix-colors,
-  ...
-}: let
-  inherit (nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
-in {
   imports = [
     ./mpv.nix
     ./ncmpcpp.nix

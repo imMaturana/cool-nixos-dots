@@ -1,7 +1,6 @@
-{
-  lib,
-  config,
-  ...
+{ lib
+, config
+, ...
 }:
 with lib; let
   ms = config.home.monitors;
@@ -39,7 +38,8 @@ with lib; let
       };
     };
   };
-in {
+in
+{
   options = {
     home = {
       monitors = mkOption {

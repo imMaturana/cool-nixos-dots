@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.vscode = {
     userSettings = {
       editor.lineNumbers = "relative";

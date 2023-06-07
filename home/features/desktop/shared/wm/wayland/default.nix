@@ -1,9 +1,9 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: let
+{ pkgs
+, lib
+, config
+, ...
+}:
+let
   inherit (config.colorscheme) colors;
 
   fuzzel-menu = pkgs.writeScriptBin "fuzzel_menu" ''
@@ -14,7 +14,8 @@
     -C '${colors.base0D}ff' -m '${colors.base08}ff' \
     -s '${colors.base02}ff' -S '${colors.base06}ff'
   '';
-in {
+in
+{
   imports = [
     ./fnott.nix
     ./foot.nix

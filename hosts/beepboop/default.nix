@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ../shared
     ../features/desktop/hyprland
@@ -10,8 +10,8 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.kernelModules = ["xhci_pci" "ahci" "uas" "sd_mod"];
-  boot.blacklistedKernelModules = ["nouveau"];
+  boot.initrd.kernelModules = [ "xhci_pci" "ahci" "uas" "sd_mod" ];
+  boot.blacklistedKernelModules = [ "nouveau" ];
 
   networking.interfaces = {
     wlp3s0.useDHCP = true;

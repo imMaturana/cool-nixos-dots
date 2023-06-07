@@ -1,12 +1,12 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
+{ pkgs
+, lib
+, config
+, ...
 }:
 with lib; let
   cfg = config.programs.hyprpaper;
-in {
+in
+{
   options = {
     programs.hyprpaper = {
       enable = mkEnableOption "Enable hyprpaper";
@@ -31,7 +31,7 @@ in {
             };
           };
         });
-        default = [];
+        default = [ ];
         defaultText = literalExpression "[ ]";
         example = literalExpression ''
           [{
@@ -44,15 +44,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [cfg.package];
+    home.packages = [ cfg.package ];
 
-    xdg.configFile."hypr/hyprpaper.conf" = mkIf (cfg.monitors != []) {
-      text = let
-        wallpapers = unique (map (m: m.wallpaper) cfg.monitors);
-      in ''
-        ${concatStringsSep "\n" (map (w: "preload=${w}") wallpapers)}
-        ${concatStringsSep "\n" (map (m: "wallpaper=${m.name},${m.wallpaper}") cfg.monitors)}
-      '';
+    xdg.configFile."hypr/hyprpaper.conf" = mkIf (cfg.monitors != [ ]) {
+      text =
+        let
+          wallpapers = unique (map (m: m.wallpaper) cfg.monitors);
+        in
+        ''
+          ${concatStringsSep "\n" (map (w: "preload=${w}") wallpapers)}
+          ${concatStringsSep "\n" (map (m: "wallpaper=${m.name},${m.wallpaper}") cfg.monitors)}
+        '';
     };
   };
 }

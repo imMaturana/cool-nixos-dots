@@ -1,9 +1,8 @@
-{
-  pkgs,
-  lib,
-  config,
-  osConfig,
-  ...
+{ pkgs
+, lib
+, config
+, osConfig
+, ...
 }: {
   programs.fish = {
     enable = osConfig.programs.fish.enable;

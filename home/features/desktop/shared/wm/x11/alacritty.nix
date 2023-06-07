@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   inherit (config.home.fonts.monospace) family;
-in {
+in
+{
   programs.alacritty = {
     enable = true;
     settings = {
@@ -12,10 +14,10 @@ in {
       };
 
       font = {
-        normal = {inherit family;};
-        bold = {inherit family;};
-        italic = {inherit family;};
-        bold_italic = {inherit family;};
+        normal = { inherit family; };
+        bold = { inherit family; };
+        italic = { inherit family; };
+        bold_italic = { inherit family; };
         size = 7.0;
         offset = {
           x = 0;

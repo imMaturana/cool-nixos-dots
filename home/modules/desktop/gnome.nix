@@ -1,32 +1,35 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
+{ pkgs
+, lib
+, config
+, ...
 }:
 with lib; let
   cfg = config.desktopEnvironment.gnome;
 
-  bindings = let
-    bindingsList =
-      mapAttrsToList (binding: command: {
-        inherit binding command;
-        name = ''Run "${command}"'';
-      })
-      cfg.bindings;
-  in
-    listToAttrs (imap0 (i: binding: {
+  bindings =
+    let
+      bindingsList =
+        mapAttrsToList
+          (binding: command: {
+            inherit binding command;
+            name = ''Run "${command}"'';
+          })
+          cfg.bindings;
+    in
+    listToAttrs (imap0
+      (i: binding: {
         name = "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom${toString i}";
         value = binding;
       })
       bindingsList);
-in {
+in
+{
   options = {
     desktopEnvironment.gnome = {
       enable = mkEnableOption "Enable Gnome configuration";
 
       themeVariant = mkOption {
-        type = types.enum ["light" "dark"];
+        type = types.enum [ "light" "dark" ];
         default = "light";
         defaultText = literalExpression "light";
       };
@@ -53,7 +56,7 @@ in {
 
       bindings = mkOption {
         type = types.attrsOf types.str;
-        default = {};
+        default = { };
         defaultText = literalExpression "{ }";
         example = literalExpression ''
           {
@@ -63,7 +66,7 @@ in {
       };
 
       workspaces = mkOption {
-        type = types.enum (["dynamic"] ++ lists.range 1 8);
+        type = types.enum ([ "dynamic" ] ++ lists.range 1 8);
         default = "dynamic";
         defaultText = literalExpression "dynamic";
       };
@@ -80,7 +83,7 @@ in {
             };
           };
         };
-        default = {};
+        default = { };
         defaultText = literalExpression "{ }";
         example = literalExpression ''
           {
@@ -108,7 +111,7 @@ in {
           "org/gnome/desktop/interface" = {
             monospace-font-name =
               mkIf (!isNull cfg.monospaceFont)
-              "${cfg.monospaceFont.family} ${toString cfg.monospaceFont.size}";
+                "${cfg.monospaceFont.family} ${toString cfg.monospaceFont.size}";
             color-scheme =
               if cfg.themeVariant == "light"
               then "light"
@@ -170,7 +173,7 @@ in {
       };
     }
 
-    (mkIf (bindings != {}) {
+    (mkIf (bindings != { }) {
       dconf.settings =
         {
           "org/gnome/settings-daemon/plugins/media-keys" = {

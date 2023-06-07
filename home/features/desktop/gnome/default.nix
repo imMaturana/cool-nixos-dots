@@ -1,9 +1,8 @@
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, ...
 }: {
-  imports = [../shared];
+  imports = [ ../shared ];
 
   home.packages = with pkgs; [
     amberol

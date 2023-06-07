@@ -1,17 +1,18 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  config,
-  ...
-}: let
+{ inputs
+, pkgs
+, lib
+, config
+, ...
+}:
+let
   inherit (config.colorscheme) colors;
-  inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
 
   pamixer = lib.getExe pkgs.pamixer;
   feh = lib.getExe pkgs.feh;
   xmobar = lib.getExe config.programs.xmobar.package;
-in {
+in
+{
   imports = [
     ../shared
     ../shared/wm

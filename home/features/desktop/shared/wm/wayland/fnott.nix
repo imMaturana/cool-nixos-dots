@@ -1,14 +1,15 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
+{ pkgs
+, config
+, ...
+}:
+let
   summary-font = "${config.home.fonts.regular.family}:size=10:weight=bold";
   title-font = "${config.home.fonts.regular.family}:size=6:weight=bold:slant=italic";
   body-font = "${config.home.fonts.regular.family}:size=8:weight=regular";
   default-timeout = 5;
-in {
-  home.packages = [pkgs.libnotify];
+in
+{
+  home.packages = [ pkgs.libnotify ];
 
   services.fnott = {
     enable = true;

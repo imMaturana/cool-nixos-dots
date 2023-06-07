@@ -38,29 +38,20 @@
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    lib = import ./lib.nix inputs;
+  outputs = inputs:
+    let
+      lib = import ./lib.nix inputs;
+    in
+    {
+      homeManagerModules = import ./home/modules;
+      nixosModules = import ./hosts/modules;
 
-    inherit
-      (lib)
-      eachSystem
-      legacyPackages
-      mkHost
-      ;
-  in {
-    homeManagerModules = import ./home/modules;
-    nixosModules = import ./hosts/modules;
+      formatter = lib.eachSystem (system: lib.legacyPackages.${system}.nixpkgs-fmt);
 
-    formatter = eachSystem (system: legacyPackages.${system}.alejandra);
-
-    nixosConfigurations."beepboop" = mkHost {
-      hostname = "beepboop";
-      system = "x86_64-linux";
-      stateVersion = "22.11";
+      nixosConfigurations."beepboop" = lib.mkHost {
+        hostname = "beepboop";
+        system = "x86_64-linux";
+        stateVersion = "22.11";
+      };
     };
-  };
 }

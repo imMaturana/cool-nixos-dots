@@ -1,7 +1,6 @@
-{
-  pkgs,
-  nix-colors,
-  ...
+{ pkgs
+, nix-colors
+, ...
 }: {
   imports = [
     ../shared
@@ -40,7 +39,7 @@
     monospace = {
       family = "CaskaydiaCove Nerd Font";
       package = pkgs.nerdfonts.override {
-        fonts = ["CascadiaCode"];
+        fonts = [ "CascadiaCode" ];
       };
     };
   };

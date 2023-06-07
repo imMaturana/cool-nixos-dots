@@ -1,11 +1,12 @@
+{ pkgs
+, config
+, ...
+}:
+let
+  nix-theme = pkgs.callPackage ./nix-theme.nix { inherit config; };
+in
 {
-  pkgs,
-  config,
-  ...
-}: let
-  nix-theme = pkgs.callPackage ./nix-theme.nix {inherit config;};
-in {
-  home.packages = [pkgs.emacs-all-the-icons-fonts];
+  home.packages = [ pkgs.emacs-all-the-icons-fonts ];
 
   programs.emacs = {
     enable = true;

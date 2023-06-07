@@ -1,13 +1,13 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
+{ pkgs
+, lib
+, config
+, ...
 }:
 with lib; let
   inherit (config.wayland.windowManager.sway.config) modifier;
   inherit (config.colorscheme) colors;
-in {
+in
+{
   imports = [
     ../shared
     ../shared/wm
@@ -28,7 +28,8 @@ in {
     xwayland = true;
 
     config = {
-      output = builtins.listToAttrs (map (m: {
+      output = builtins.listToAttrs (map
+        (m: {
           inherit (m) name;
           value = {
             mode = "${toString m.width}x${toString m.height}";
@@ -58,7 +59,7 @@ in {
       };
 
       fonts = {
-        names = [config.home.fonts.regular.family];
+        names = [ config.home.fonts.regular.family ];
         size = 10.0;
       };
 
@@ -193,10 +194,10 @@ in {
           "Return" = "mode default";
         };
 
-        passthrough = {"${modifier}+F11" = "mode default";};
+        passthrough = { "${modifier}+F11" = "mode default"; };
       };
 
-      bars = [{command = "waybar";}];
+      bars = [{ command = "waybar"; }];
 
       colors = {
         focused = {
@@ -254,5 +255,5 @@ in {
     }
   ];
 
-  systemd.user.services.fnott.Install.WantedBy = ["sway-session.target"];
+  systemd.user.services.fnott.Install.WantedBy = [ "sway-session.target" ];
 }

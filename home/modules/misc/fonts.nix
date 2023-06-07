@@ -1,8 +1,7 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
+{ pkgs
+, lib
+, config
+, ...
 }:
 with lib; let
   cfg = config.home.fonts;
@@ -16,7 +15,8 @@ with lib; let
       type = types.nullOr types.package;
     };
   };
-in {
+in
+{
   options.home.fonts = {
     regular = fontModule;
     monospace = fontModule;
