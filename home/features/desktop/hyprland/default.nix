@@ -114,6 +114,11 @@ in
       # brightness
       bind=,XF86MonBrightnessUp,exec,light -A 10
       bind=,XF86MonBrightnessDown,exec,light -U 10
+
+      # screenshot
+      bind=,Print,exec,grimshot --notify save area ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg
+      bind=SHIFT,Print,exec,grimshot --notify save screen ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg
+      bind=CTRLSHIFT,Print,exec,grimshot --notify save window ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg
     '';
   };
 

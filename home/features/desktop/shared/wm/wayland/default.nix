@@ -32,6 +32,7 @@ in
     wl-clipboard
     grim
     slurp
+    sway-contrib.grimshot
     wf-recorder
   ];
 }

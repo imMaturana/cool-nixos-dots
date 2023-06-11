@@ -14,10 +14,6 @@ in
     ../shared/wm/wayland
   ];
 
-  home.packages = with pkgs; [
-    sway-contrib.grimshot
-  ];
-
   wayland.windowManager.sway = {
     enable = true;
     package = pkgs.sway-unwrapped;
@@ -159,9 +155,9 @@ in
         "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
         "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
 
-        "Print" = "exec grimshot --notify save area ${config.xdg.userDirs.pictures}/$(date +%m-%d-%Y_%H-%M-%S).jpg";
-        "Shift+Print" = "exec grimshot --notify save screen ${config.xdg.userDirs.pictures}/$(date +%m-%d-%Y_%H-%M-%S).jpg";
-        "Shift+Control+Print" = "exec grimshot --notify save window ${config.xdg.userDirs.pictures}/$(date +%m-%d-%Y_%H-%M-%S).jpg";
+        "Print" = "exec grimshot --notify save area ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg";
+        "Shift+Print" = "exec grimshot --notify save screen ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg";
+        "Shift+Control+Print" = "exec grimshot --notify save window ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg";
 
         "XF86AudioPlay" = "exec mpc toggle";
         "XF86AudioPause" = "exec mpc toggle";
