@@ -5,6 +5,7 @@
 , hyprland
 , nix-colors
 , nixvim
+, osConfig
 , ...
 }: {
   imports = [
@@ -31,6 +32,7 @@
   home = {
     username = "maturana";
     homeDirectory = "/home/maturana";
+    stateVersion = osConfig.system.stateVersion;
 
     sessionVariables = {
       PATH = lib.makeBinPath [

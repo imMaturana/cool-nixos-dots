@@ -41,17 +41,38 @@
   outputs = inputs:
     let
       lib = import ./lib.nix inputs;
+
+      inherit (lib)
+        eachSystem
+        legacyPackages
+        mkHost
+        mkHome;
     in
     {
       homeManagerModules = import ./home/modules;
       nixosModules = import ./hosts/modules;
 
-      formatter = lib.eachSystem (system: lib.legacyPackages.${system}.nixpkgs-fmt);
+      devShells = eachSystem (system:
+        let 
+          pkgs = legacyPackages.${system};
+        in {
+          default = pkgs.mkShell {
+            name = "dotfiles";
+            buildInputs = with pkgs; [
+              home-manager
+              cryptsetup
+            ];
+          };
+        });
 
-      nixosConfigurations."beepboop" = lib.mkHost {
+      formatter = eachSystem (system: legacyPackages.${system}.nixpkgs-fmt);
+
+      nixosConfigurations."beepboop" = mkHost {
         hostname = "beepboop";
         system = "x86_64-linux";
         stateVersion = "22.11";
       };
+
+      homeConfigurations."maturana@beepboop" = mkHome "beepboop";
     };
 }

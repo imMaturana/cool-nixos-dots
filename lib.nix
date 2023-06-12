@@ -2,6 +2,7 @@ inputs:
 let
   inherit (inputs) nixpkgs hm;
   inherit (nixpkgs) lib;
+  inherit (inputs.self.outputs) nixosConfigurations;
 
   eachSystem = lib.genAttrs [
     "x86_64-linux"
@@ -34,23 +35,16 @@ in
 
           system.stateVersion = stateVersion;
         }
-      ] ++ lib.optionals (lib.pathExists ./home/${hostname}) [
-        hm.nixosModules.home-manager
-
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-          home-manager.users.maturana = lib.mkMerge [
-            ./home/${hostname}
-
-            { home.stateVersion = stateVersion; }
-          ];
-
-          home-manager.extraSpecialArgs = inputs;
-        }
       ];
 
       specialArgs = inputs;
     };
+
+  mkHome = hostname: hm.lib.homeManagerConfiguration {
+    pkgs = nixosConfigurations.${hostname}.pkgs;
+    modules = [ ./home/${hostname} ];
+    extraSpecialArgs = inputs // {
+      osConfig = nixosConfigurations.${hostname}.config;
+    };
+  };
 }

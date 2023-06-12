@@ -25,11 +25,6 @@
     }
   ];
 
-  home.packages = with pkgs; [
-    distrobox
-    element-desktop
-  ];
-
   home.fonts = {
     regular = {
       family = "Noto Sans";
