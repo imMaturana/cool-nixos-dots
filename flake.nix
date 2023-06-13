@@ -53,9 +53,10 @@
       nixosModules = import ./hosts/modules;
 
       devShells = eachSystem (system:
-        let 
+        let
           pkgs = legacyPackages.${system};
-        in {
+        in
+        {
           default = pkgs.mkShell {
             name = "dotfiles";
             buildInputs = with pkgs; [
