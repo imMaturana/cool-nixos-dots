@@ -70,7 +70,7 @@
       nixosConfigurations."mercury" = mkHost {
         hostname = "mercury";
         system = "x86_64-linux";
-        stateVersion = "22.11";
+        stateVersion = "23.05";
       };
 
       homeConfigurations."maturana@mercury" = mkHome "mercury";
