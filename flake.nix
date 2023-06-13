@@ -36,9 +36,17 @@
     nixvim.url = "github:pta2002/nixvim/nixos-23.05";
 
     nur.url = "github:nix-community/NUR";
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs:
+  outputs =
+    { pre-commit-hooks
+    , ...
+    } @ inputs:
     let
       lib = import ./lib.nix inputs;
 
@@ -66,6 +74,16 @@
             ];
           };
         });
+
+      checks = eachSystem (system: {
+        pre-commit-check = pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            deadnix.enable = true;
+            nixpkgs-fmt.enable = true;
+          };
+        };
+      });
 
       formatter = eachSystem (system: legacyPackages.${system}.nixpkgs-fmt);
 

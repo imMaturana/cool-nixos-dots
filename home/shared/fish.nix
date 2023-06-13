@@ -1,11 +1,8 @@
-{ pkgs
-, lib
-, config
-, osConfig
+{ osConfig
 , ...
 }: {
   programs.fish = {
-    enable = osConfig.programs.fish.enable;
+    inherit (osConfig.programs.fish) enable;
 
     shellAliases = {
       mv = "mv -i";
