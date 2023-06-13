@@ -10,7 +10,6 @@
     ./locale.nix
     ./programs.nix
     ./services.nix
-    ./environment.nix
   ];
 
   boot.loader = {
