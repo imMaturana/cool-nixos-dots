@@ -67,12 +67,16 @@
 
       formatter = eachSystem (system: legacyPackages.${system}.nixpkgs-fmt);
 
-      nixosConfigurations."mercury" = mkHost {
+      nixosConfigurations.mercury = mkHost {
         hostname = "mercury";
         system = "x86_64-linux";
         stateVersion = "23.05";
       };
 
-      homeConfigurations."mercury" = mkHome "mercury";
+      diskoConfigurations = {
+        mercury = import ./hosts/mercury/disko.nix;
+      };
+
+      homeConfigurations.mercury = mkHome "mercury";
     };
 }
