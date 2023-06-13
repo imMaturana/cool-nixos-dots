@@ -1,9 +1,9 @@
 inputs:
 let
-  inherit (inputs) nixpkgs hm;
+  inherit (inputs) self nixpkgs hm;
   inherit (nixpkgs) lib;
 
-  inherit (inputs.self.outputs)
+  inherit (self.outputs)
     nixosConfigurations
     diskoConfigurations;
 
