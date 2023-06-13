@@ -73,6 +73,6 @@
         stateVersion = "23.05";
       };
 
-      homeConfigurations."maturana@mercury" = mkHome "mercury";
+      homeConfigurations."mercury" = mkHome "mercury";
     };
 }
