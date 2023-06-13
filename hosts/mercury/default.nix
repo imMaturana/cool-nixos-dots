@@ -5,8 +5,6 @@
     ../features/profiles/laptop.nix
     ../features/networking/firewall.nix
     ../users/maturana.nix
-
-    ./disko.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;

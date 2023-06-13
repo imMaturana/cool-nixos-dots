@@ -2,7 +2,10 @@ inputs:
 let
   inherit (inputs) nixpkgs hm;
   inherit (nixpkgs) lib;
-  inherit (inputs.self.outputs) nixosConfigurations;
+
+  inherit (inputs.self.outputs)
+    nixosConfigurations
+    diskoConfigurations;
 
   eachSystem = lib.genAttrs [
     "x86_64-linux"
@@ -28,6 +31,7 @@ in
 
       modules = [
         ./hosts/${hostname}
+        diskoConfigurations.${hostname}
 
         {
           networking.hostName = hostname;
@@ -39,6 +43,8 @@ in
 
       specialArgs = inputs;
     };
+
+  mkDisk = hostname: import ./disko/${hostname}.nix;
 
   mkHome = hostname: hm.lib.homeManagerConfiguration {
     pkgs = nixosConfigurations.${hostname}.pkgs;

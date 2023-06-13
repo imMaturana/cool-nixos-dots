@@ -46,6 +46,7 @@
         eachSystem
         legacyPackages
         mkHost
+        mkDisk
         mkHome;
     in
     {
@@ -75,7 +76,7 @@
       };
 
       diskoConfigurations = {
-        mercury = import ./hosts/mercury/disko.nix;
+        mercury = mkDisk "mercury";
       };
 
       homeConfigurations.mercury = mkHome "mercury";
