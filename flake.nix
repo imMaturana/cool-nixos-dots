@@ -67,12 +67,12 @@
 
       formatter = eachSystem (system: legacyPackages.${system}.nixpkgs-fmt);
 
-      nixosConfigurations."beepboop" = mkHost {
-        hostname = "beepboop";
+      nixosConfigurations."mercury" = mkHost {
+        hostname = "mercury";
         system = "x86_64-linux";
         stateVersion = "22.11";
       };
 
-      homeConfigurations."maturana@beepboop" = mkHome "beepboop";
+      homeConfigurations."maturana@mercury" = mkHome "mercury";
     };
 }
