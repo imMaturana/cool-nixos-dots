@@ -18,7 +18,7 @@ in
       "greeter"
     ];
 
-    initialPassword = "";
+    hashedPassword = "$6$t0F4VBY2NtNu73Sw$CGzB7z6/W7eptkwxcZm6J8b2E0VNFPD0JPPeq5uXm67Gmfxt/pTZPnvcT/ZupY6/UeozrcrRZruD1nUNMHrcA0";
     shell = pkgs.${shell};
   };
 
