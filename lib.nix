@@ -1,13 +1,14 @@
-inputs:
+{ self
+, nixpkgs
+, hm
+
+, nur
+, ...
+} @ inputs:
 let
-  inherit (inputs) self nixpkgs hm;
-  inherit (nixpkgs) lib;
+  inherit (self.outputs) nixosConfigurations diskoConfigurations;
 
-  inherit (self.outputs)
-    nixosConfigurations
-    diskoConfigurations;
-
-  eachSystem = lib.genAttrs [
+  eachSystem = nixpkgs.lib.genAttrs [
     "x86_64-linux"
   ];
 
@@ -15,7 +16,7 @@ let
     import nixpkgs {
       inherit system;
       config = { allowUnfree = true; };
-      overlays = [ inputs.nur.overlay ];
+      overlays = [ nur.overlay ];
     });
 in
 {
@@ -26,7 +27,7 @@ in
     , system
     , stateVersion
     }:
-    lib.nixosSystem {
+    nixpkgs.lib.nixosSystem {
       pkgs = legacyPackages.${system};
 
       modules = [
