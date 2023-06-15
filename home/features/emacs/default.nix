@@ -25,6 +25,7 @@ in
         nix-mode
         go-mode
         zig-mode
+        web-mode
         lsp-pyright
 
         # lsp
@@ -100,6 +101,17 @@ in
         ;; zig
         (require 'zig-mode)
         (add-hook 'zig-mode-hook 'eglot-ensure)
+
+        ;; web
+        (require 'web-mode)
+        (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)) 
+
+        (setq web/indent-offset 2
+              web-mode-markup-indent-offset web/indent-offset
+              web-mode-css-indent-offset web/indent-offset
+              web-mode-code-indent-offset web/indent-offset)
+
+        (setq web-mode-enable-auto-closing t) ; emacsclient
 
         ;; direnv
         (require 'direnv)
