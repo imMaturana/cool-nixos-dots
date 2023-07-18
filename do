@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 function install() {
+    if [ $UID -ne 0 ]; then
+        echo "Root must be used."
+        exit 1
+    fi
+    
     if [ -z "$1" ]; then
         echo "A hostname must be specified."
         exit 1
