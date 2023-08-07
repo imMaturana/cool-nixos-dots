@@ -1,5 +1,6 @@
 { pkgs
 , lib
+, config
 , ...
 }: {
   imports = [ ../shared ];
@@ -18,7 +19,7 @@
 
     monospaceFont = {
       inherit (config.home.fonts.monospace) family;
-      size = 10;
+      size = 10.0;
     };
 
     bindings = {

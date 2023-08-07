@@ -35,7 +35,7 @@ in
       };
 
       monospaceFont = mkOption {
-        type = types.nullOr (types.submoudule {
+        type = types.nullOr (types.submodule {
           options = {
             family = mkOption {
               type = types.str;
