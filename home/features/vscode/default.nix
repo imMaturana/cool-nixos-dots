@@ -6,7 +6,7 @@
 with lib; {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium-fhs;
+    package = pkgs.vscodium;
     userSettings = {
       editor = {
         fontFamily = "'${config.home.fonts.monospace.family}', monospace";
