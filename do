@@ -55,4 +55,5 @@ case $1 in
     debug) debug ;;
     home-deploy) home_deploy ;;
     home-debug) home_debug ;;
+    *) echo "$1: Invalid argument." && exit 1 ;;
 esac
