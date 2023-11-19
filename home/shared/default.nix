@@ -21,7 +21,6 @@
     ./direnv.nix
     ./fish.nix
     ./git.nix
-    ./gpg.nix
     ./lazygit.nix
     ./syncthing.nix
     ./tmux.nix
