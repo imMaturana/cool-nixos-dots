@@ -8,6 +8,7 @@
         term = "xterm-256color";
         font = "${config.home.fonts.monospace.family}:size=7";
         pad = "10x10";
+        dpi-aware = "true";
       };
 
       bell = {
