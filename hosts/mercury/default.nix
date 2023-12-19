@@ -3,7 +3,7 @@
     ../shared
     ../features/desktop/hyprland
     ../features/profiles/laptop.nix
-    ../features/networking/firewall.nix
+    ../features/firewall.nix
     ../users/maturana.nix
   ];
 
