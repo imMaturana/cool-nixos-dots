@@ -146,7 +146,7 @@ in
       /* waybar */
       window#waybar {
         font-family: '${config.home.fonts.regular.family}';
-        font-size: 1.25em;
+        font-size: 16px;
         background: #${base00};
         color: #${base06};
       }
