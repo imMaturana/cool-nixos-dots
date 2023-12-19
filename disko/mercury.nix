@@ -59,8 +59,8 @@ in
                 mountOptions = sharedMountOptions;
               };
 
-              "@var" = {
-                mountpoint = "/var";
+              "@var_log" = {
+                mountpoint = "/var/log";
                 mountOptions = sharedMountOptions;
               };
 
