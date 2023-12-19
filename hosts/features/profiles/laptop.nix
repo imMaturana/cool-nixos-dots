@@ -2,7 +2,7 @@
 , ...
 }: {
   imports = [
-    ../networking/bluetooth.nix
+    ../bluetooth.nix
   ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];

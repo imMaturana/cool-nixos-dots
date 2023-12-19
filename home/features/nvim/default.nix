@@ -23,21 +23,19 @@
       mapleader = " ";
     };
 
-    maps = {
-      normal = {
-        # switch between buffers
-        "<C-j>" = {
-          action = ":bnext<CR>";
-          noremap = true;
-          silent = true;
-        };
-        "<C-k>" = {
-          action = ":bprev<CR>";
-          noremap = true;
-          silent = true;
-        };
-      };
-    };
+    keymaps = [
+      # switch between buffers
+      {
+        mode = "n";
+        key = "<C-j>";
+        action = ":bnext<CR>";
+      }
+      {
+        mode = "n";
+        key = "<C-k>";
+        action = ":bprev<CR>";
+      }
+    ];
 
     plugins = {
       bufferline.enable = true;
@@ -72,7 +70,11 @@
         enable = true;
         servers = {
           rnix-lsp.enable = true;
-          rust-analyzer.enable = true;
+          rust-analyzer = {
+            enable = true;
+            installRustc = false;
+            installCargo = false;
+          };
           pyright.enable = true;
           zls.enable = true;
           gopls.enable = true;

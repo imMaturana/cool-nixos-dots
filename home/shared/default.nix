@@ -1,6 +1,5 @@
 { lib
 , self
-, hyprland
 , nix-colors
 , nixvim
 , osConfig
@@ -8,7 +7,6 @@
 }: {
   imports = [
     self.homeManagerModules
-    hyprland.homeManagerModules.default
     nix-colors.homeManagerModule
     nixvim.homeManagerModules.nixvim
 
@@ -33,6 +31,7 @@
 
     sessionVariables = {
       PATH = lib.makeBinPath [
+        "$PATH"
         "$HOME/.local"
       ];
     };

@@ -1,6 +1,5 @@
 {
   programs = {
-    home-manager.enable = true;
     jq.enable = true;
     fzf.enable = true;
     nix-index.enable = true;
@@ -12,7 +11,7 @@
       config.theme = "base16";
     };
 
-    exa = {
+    eza = {
       enable = true;
       enableAliases = true;
     };

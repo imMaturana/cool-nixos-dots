@@ -9,6 +9,9 @@
     ../features/nvim
     ../features/helix
     ../features/emacs
+
+    # extra configs
+    ./hyprland.nix
   ];
 
   colorscheme = nix-colors.colorSchemes.catppuccin-mocha;

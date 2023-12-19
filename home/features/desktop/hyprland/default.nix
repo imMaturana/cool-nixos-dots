@@ -14,111 +14,103 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = ''
-      ${concatStrings (map (
-          monitor: let
-            inherit (monitor) name width height position;
-            pos = position;
-          in ''
-            monitor=${name},${toString width}x${toString height},${toString pos.x}x${toString pos.y},1
-            workspace=${name},1
-          ''
-        )
-        config.home.monitors)}
 
-      input {
-        kb_layout=${config.home.keyboard.layout}
-        kb_variant=${config.home.keyboard.variant}
-        kb_options=${concatStringsSep "," config.home.keyboard.options}
+    settings = {
+      "$mod" = "SUPER";
 
-        follow_mouse=1
-        touchpad {
-          natural_scroll=1
-        }
-      }
+      input = {
+        kb_layout = config.home.keyboard.layout;
+        kb_variant = config.home.keyboard.variant;
+        kb_options = config.home.keyboard.options;
 
-      general {
-        gaps_in=5
-        gaps_out=10
-        border_size=3
-        col.active_border=0xff${colors.base0B}
-        col.inactive_border=0xff${colors.base00}
-        cursor_inactive_timeout=4
-      }
+        follow_mouse = "1";
+        touchpad.natural_scroll = "1";
+      };
 
-      decoration {
-        rounding=3
+      general = {
+        gaps_in = 5;
+        gaps_out = 10;
+        border_size = 3;
+        "col.active_border" = "0xff${colors.base0B}";
+        "col.inactive_border" = "0xff${colors.base00}";
+        cursor_inactive_timeout = 4;
+      };
 
-        drop_shadow=1
-        shadow_ignore_window=1
-        shadow_offset=4 4
-        shadow_range=4.5
-        col.shadow=0x88000000
-      }
+      decoration = {
+        rounding = 3;
 
-      # startup
-      exec-once=waybar
-      exec=hyprpaper
 
-      # window rules
-      windowrule=float,^(mpv)$
-      windowrule=float,^(org.keepassxc.KeePassXC)$
+        drop_shadow = 1;
+        shadow_ignore_window = 1;
+        shadow_offset = "4 4";
+        shadow_range = 4.5;
+        "col.shadow" = "0x88000000";
+      };
 
-      # mouse
-      bindm=SUPER,mouse:272,movewindow
-      bindm=SUPER,mouse:273,resizewindow
+      exec-once = ["waybar"];
+      exec = ["hyprpaper"];
 
-      # programs
-      bind=SUPER,Return,exec,foot
-      bind=SUPER,W,exec,librewolf
-      bindr=SUPER,P,exec,pkill fuzzel || fuzzel_menu
+      windowrule = [
+        "float,^(mpv)$"
+        "float,^(org.keepassxc.KeePassXC)$"
+      ];
 
-      # compositor
-      bind=SUPERSHIFT,Q,exit,
-      bind=SUPERSHIFT,C,killactive,
-      bind=SUPER,F,fullscreen,
-      bind=SUPER,T,togglefloating,
+      bindm = [
+        "$mod,mouse:272,movewindow"
+        "$mod,mouse:273,resizewindow"
+      ];
 
-      # move focus
-      bind=SUPER,left,movefocus,l
-      bind=SUPER,right,movefocus,r
-      bind=SUPER,up,movefocus,u
-      bind=SUPER,down,movefocus,d
+      bind = [
+        "$mod,Return,exec,foot"
+        "$mod,W,exec,librewolf"
 
-      # workspaces
-      ${concatStrings (genList (
-          x: let
-            ws = toString (x + 1);
-          in ''
-            bind=SUPER,${ws},workspace,${ws}
-            bind=SUPERSHIFT,${ws},movetoworkspace,${ws}
-          ''
-        )
-        9)}
+        # compositor
+        "SUPERSHIFT,Q,exit,"
+        "SUPERSHIFT,C,killactive,"
+        "$mod,F,fullscreen,"
+        "$mod,T,togglefloating,"
 
-      # scratchpad
-      bind=SUPERSHIFT,S,movetoworkspace,special
-      bind=SUPER,S,togglespecialworkspace,
+        # move focus
+        "$mod,left,movefocus,l"
+        "$mod,right,movefocus,r"
+        "$mod,up,movefocus,u"
+        "$mod,down,movefocus,d"
 
-      # media
-      bind=,XF86AudioPlay,exec,mpc toggle
-      bind=,XF86AudioNext,exec,mpc next
-      bind=,XF86AudioPrev,exec,mpc prev
+        # scratchpad
+        "SUPERSHIFT,S,movetoworkspace,special"
+        "SUPER,S,togglespecialworkspace,"
 
-      # volume
-      bind=,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-      bind=,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-      bind=,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+        # media
+        ",XF86AudioPlay,exec,mpc toggle"
+        ",XF86AudioNext,exec,mpc next"
+        ",XF86AudioPrev,exec,mpc prev"
 
-      # brightness
-      bind=,XF86MonBrightnessUp,exec,light -A 10
-      bind=,XF86MonBrightnessDown,exec,light -U 10
+        # volume
+        ",XF86AudioMute,exec,wpctl set-mute @DEFAUL_AUDIO_SINK@ toggle"
+        ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 
-      # screenshot
-      bind=,Print,exec,grimshot --notify save area ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg
-      bind=SHIFT,Print,exec,grimshot --notify save screen ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg
-      bind=CTRLSHIFT,Print,exec,grimshot --notify save window ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg
-    '';
+        # brightness
+        ",XF86MonBrightnessUp,exec,light -A 10"
+        ",XF86MonBrightnessDown,exec,light -U 10"
+
+        # screenshot
+        ",Print,exec,grimshot --notify save area ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg"
+        "SHIFT,Print,exec,grimshot --notify save screen ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg"
+        "CTRLSHIFT,Print,exec,grimshot --notify save window ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg"
+      ] ++ concatLists (genList (x: let
+        ws = toString (x + 1);
+      in [
+        "SUPER,${ws},workspace,${ws}"
+        "SUPERSHIFT,${ws},movetoworkspace,${ws}"
+      ]) 9);
+
+      bindr = [
+        "$mod,P,exec,pkill fuzzel || fuzzel_menu"
+      ];
+
+      env = ["XCURSOR_SIZE,32"];
+    };
   };
 
   programs.hyprpaper = {

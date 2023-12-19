@@ -14,15 +14,10 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     hm = {
-      url = "github:nix-community/home-manager/release-23.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland/v0.26.0";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,7 +28,7 @@
 
     nix-colors.url = "github:Misterio77/nix-colors/4.0.0";
 
-    nixvim.url = "github:nix-community/nixvim/nixos-23.05";
+    nixvim.url = "github:nix-community/nixvim/nixos-23.11";
 
     nur.url = "github:nix-community/NUR";
 

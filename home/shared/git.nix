@@ -2,15 +2,14 @@
   programs.git = {
     enable = true;
     userName = "imMaturana";
-    userEmail = "maturana.dev@gmail.com";
+    userEmail = "git@maturana.simplelogin.com";
 
     signing = {
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIApciVrwNsMaaPNIPn9CMoHfKSx1Gzq/QY8Ri4ResOAW maturana.dev@gmail.com";
+      key = "CBB817BF7AB06ADBB418646CEC57406107E88C18";
       signByDefault = true;
     };
 
     extraConfig = {
-      gpg.format = "ssh";
       init.defaultBranch = "main";
     };
   };
