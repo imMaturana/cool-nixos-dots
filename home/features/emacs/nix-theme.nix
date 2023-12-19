@@ -1,15 +1,15 @@
-{ emacsPackagesFor
+{ trivialBuild
 , writeText
+, base16-theme
 , config
-, ...
 }:
 let
   inherit (config.colorscheme) name slug colors;
-  emacsPackages = emacsPackagesFor config.programs.emacs.package;
 in
-emacsPackages.trivialBuild rec {
+trivialBuild rec {
   pname = "nix-theme";
-  packageRequires = [ emacsPackages.base16-theme ];
+  version = "null";
+  packageRequires = [ base16-theme ];
   src = writeText "${pname}.el" ''
     (require 'base16-theme)
 

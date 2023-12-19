@@ -2,9 +2,6 @@
 , config
 , ...
 }:
-let
-  nix-theme = pkgs.callPackage ./nix-theme.nix { inherit config; };
-in
 {
   home.packages = [ pkgs.emacs-all-the-icons-fonts ];
 
@@ -12,33 +9,38 @@ in
     enable = true;
     package = pkgs.emacs-gtk;
 
-    extraPackages = epkgs:
-      with epkgs; [
-        # ui
-        doom-modeline
-        nix-theme
-        all-the-icons
-        dashboard
-        vertico
+    extraPackages = epkgs: let
+      nix-theme = pkgs.callPackage ./nix-theme.nix {
+        inherit (pkgs) writeText;
+        inherit (epkgs) trivialBuild base16-theme;
+        inherit config;
+      };
+    in with epkgs; [
+      # ui
+      doom-modeline
+      nix-theme
+      all-the-icons
+      dashboard
+      vertico
 
-        # programming
-        nix-mode
-        go-mode
-        zig-mode
-        web-mode
-        lsp-pyright
+      # programming
+      nix-mode
+      go-mode
+      zig-mode
+      web-mode
+      lsp-pyright
 
-        # lsp
-        orderless
-        corfu
-        eglot
+      # lsp
+      orderless
+      corfu
+      eglot
 
-        # tools
-        org
-        direnv
-        magit
-        vterm
-      ];
+      # tools
+      org
+      direnv
+      magit
+      vterm
+    ];
 
     extraConfig = ''
       (progn ; ui
