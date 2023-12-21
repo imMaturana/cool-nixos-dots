@@ -6,9 +6,10 @@
 , ...
 } @ inputs:
 let
+  inherit (nixpkgs.lib) genAttrs listToAttrs;
   inherit (self.outputs) nixosConfigurations diskoConfigurations;
 
-  eachSystem = nixpkgs.lib.genAttrs [
+  eachSystem = genAttrs [
     "x86_64-linux"
   ];
 
@@ -45,7 +46,9 @@ in
       specialArgs = inputs;
     };
 
-  mkDisk = hostname: import ./disko/${hostname}.nix;
+  mkDiskFor = hosts: listToAttrs (map (h: {
+    name = h; value = import ./disko/${h}.nix;
+  }) hosts);
 
   mkHome = hostname: hm.lib.homeManagerConfiguration {
     pkgs = nixosConfigurations.${hostname}.pkgs;

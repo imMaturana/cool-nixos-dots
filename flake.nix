@@ -49,7 +49,7 @@
         eachSystem
         legacyPackages
         mkHost
-        mkDisk
+        mkDiskFor
         mkHome;
     in
     {
@@ -88,9 +88,9 @@
         stateVersion = "23.11";
       };
 
-      diskoConfigurations = {
-        mercury = mkDisk "mercury";
-      };
+      diskoConfigurations = mkDiskFor [
+        "mercury"
+      ];
 
       homeConfigurations.mercury = mkHome "mercury";
     };
