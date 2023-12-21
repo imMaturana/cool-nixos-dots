@@ -47,8 +47,8 @@ in
         "col.shadow" = "0x88000000";
       };
 
-      exec-once = ["waybar"];
-      exec = ["hyprpaper"];
+      exec-once = [ "waybar" ];
+      exec = [ "hyprpaper" ];
 
       windowrule = [
         "float,^(mpv)$"
@@ -98,18 +98,21 @@ in
         ",Print,exec,grimshot --notify save area ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg"
         "SHIFT,Print,exec,grimshot --notify save screen ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg"
         "CTRLSHIFT,Print,exec,grimshot --notify save window ${config.xdg.userDirs.pictures}/$(date +%d-%m-%Y_%H-%M-%S).jpg"
-      ] ++ concatLists (genList (x: let
-        ws = toString (x + 1);
-      in [
-        "SUPER,${ws},workspace,${ws}"
-        "SUPERSHIFT,${ws},movetoworkspace,${ws}"
-      ]) 9);
+      ] ++ concatLists (genList
+        (x:
+          let
+            ws = toString (x + 1);
+          in
+          [
+            "SUPER,${ws},workspace,${ws}"
+            "SUPERSHIFT,${ws},movetoworkspace,${ws}"
+          ]) 9);
 
       bindr = [
         "$mod,P,exec,pkill fuzzel || fuzzel"
       ];
 
-      env = ["XCURSOR_SIZE,32"];
+      env = [ "XCURSOR_SIZE,32" ];
     };
   };
 

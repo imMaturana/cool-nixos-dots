@@ -46,9 +46,12 @@ in
       specialArgs = inputs;
     };
 
-  mkDiskFor = hosts: listToAttrs (map (h: {
-    name = h; value = import ./disko/${h}.nix;
-  }) hosts);
+  mkDiskFor = hosts: listToAttrs (map
+    (h: {
+      name = h;
+      value = import ./disko/${h}.nix;
+    })
+    hosts);
 
   mkHome = hostname: hm.lib.homeManagerConfiguration {
     pkgs = nixosConfigurations.${hostname}.pkgs;
