@@ -1,4 +1,4 @@
-{ config, ... }: {
+{
   imports = [ ./swaylock.nix ];
 
   services.swayidle = {
