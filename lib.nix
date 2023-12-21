@@ -53,11 +53,16 @@ in
     })
     hosts);
 
-  mkHome = hostname: hm.lib.homeManagerConfiguration {
-    pkgs = nixosConfigurations.${hostname}.pkgs;
-    modules = [ ./home/${hostname} ];
-    extraSpecialArgs = inputs // {
-      osConfig = nixosConfigurations.${hostname}.config;
-    };
-  };
+  mkHomeFor = hosts: listToAttrs (map
+    (h: {
+      name = h;
+      value = hm.lib.homeManagerConfiguration {
+        pkgs = nixosConfigurations.${h}.pkgs;
+        modules = [ ./home/${h} ];
+        extraSpecialArgs = inputs // {
+          osConfig = nixosConfigurations.${h}.config;
+        };
+      };
+    })
+    hosts);
 }

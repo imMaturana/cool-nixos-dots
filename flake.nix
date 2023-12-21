@@ -50,7 +50,7 @@
         legacyPackages
         mkHost
         mkDiskFor
-        mkHome;
+        mkHomeFor;
     in
     {
       homeManagerModules = import ./home/modules;
@@ -78,6 +78,8 @@
         "mercury"
       ];
 
-      homeConfigurations.mercury = mkHome "mercury";
+      homeConfigurations = mkHomeFor [
+        "mercury"
+      ];
     };
 }
