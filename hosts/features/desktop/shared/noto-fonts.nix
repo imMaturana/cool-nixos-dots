@@ -6,7 +6,7 @@
       serif = [ "Noto Serif" ];
     };
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       # noto fonts
       noto-fonts
       noto-fonts-extra
