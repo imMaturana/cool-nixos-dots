@@ -56,20 +56,6 @@
       homeManagerModules = import ./home/modules;
       nixosModules = import ./hosts/modules;
 
-      devShells = eachSystem (system:
-        let
-          pkgs = legacyPackages.${system};
-        in
-        {
-          default = pkgs.mkShell {
-            name = "dotfiles";
-            buildInputs = with pkgs; [
-              home-manager
-              cryptsetup
-            ];
-          };
-        });
-
       checks = eachSystem (system: {
         pre-commit-check = pre-commit-hooks.lib.${system}.run {
           src = ./.;
