@@ -106,7 +106,7 @@ in
         "${modifier}+Return" = "exec foot";
 
         # open launcher
-        "${modifier}+p" = "exec fuzzel_menu";
+        "${modifier}+p" = "exec fuzzel";
 
         "${modifier}+Shift+c" = "kill";
 

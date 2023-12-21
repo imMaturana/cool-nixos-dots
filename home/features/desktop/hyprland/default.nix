@@ -106,7 +106,7 @@ in
       ]) 9);
 
       bindr = [
-        "$mod,P,exec,pkill fuzzel || fuzzel_menu"
+        "$mod,P,exec,pkill fuzzel || fuzzel"
       ];
 
       env = ["XCURSOR_SIZE,32"];
