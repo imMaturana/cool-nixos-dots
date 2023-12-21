@@ -27,7 +27,7 @@ in
             "sway/mode"
           ]
           ++ optionals config.wayland.windowManager.hyprland.enable [
-            "hyprland/window"
+            "hyprland/workspaces"
           ];
 
         modules-right = [
@@ -46,6 +46,7 @@ in
 
         "network" = {
           format = "🐑 {essid}";
+          format-ethernet = "🐑 {ipaddr}/{cidr}";
           format-disconnect = "Disconnected";
           format-alt = "⬆️ {bandwidthUpBits} ⬇️ {bandwidthDownBits}";
           tooltip-format = "{ifname}";
@@ -120,8 +121,8 @@ in
         };
 
         # hyprland
-        "hyprland/window" = {
-          format = "{}";
+        "hyprland/workspaces" = {
+          format = "{id}";
         };
 
         # river only
@@ -175,6 +176,7 @@ in
       }
 
       #workspaces button.focused,
+      #workspaces button.active,
       #tags button.focused {
         color: #${base0D};
       }
