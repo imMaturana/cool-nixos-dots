@@ -23,6 +23,7 @@
     ./lazygit.nix
     ./syncthing.nix
     ./tmux.nix
+    ./zsh.nix
   ];
 
   home = {

@@ -3,35 +3,7 @@
 }: {
   programs.fish = {
     inherit (osConfig.programs.fish) enable;
-
-    shellAliases = {
-      mv = "mv -i";
-      cp = "cp -i";
-      rm = "rm -i";
-      mkdir = "mkdir -p";
-
-      parrot = "curl parrot.live";
-    };
-
-    shellAbbrs = {
-      # cd
-      ".." = "cd ..";
-      ".2" = "cd ../..";
-      ".3" = "cd ../../..";
-      ".4" = "cd ../../../..";
-      ".5" = "cd ../../../../..";
-
-      # systemd
-      sctl = "systemctl";
-      sctlu = "systemctl --user";
-
-      # bluetooth
-      bt = "bluetoothctl";
-      btc = "bluetoothctl connect";
-      btd = "bluetoothctl disconnect";
-      bton = "bluetoothctl power on";
-      btoff = "bluetoothctl power off";
-    };
+    shellAliases = import ./_shellAliases.nix;
 
     interactiveShellInit = ''
       # disable startup shell message
