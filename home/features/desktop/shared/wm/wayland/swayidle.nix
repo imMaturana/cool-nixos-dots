@@ -1,3 +1,6 @@
+{ pkgs
+, ...
+}:
 {
   imports = [ ./swaylock.nix ];
 
@@ -7,7 +10,7 @@
     events = [
       {
         event = "before-sleep";
-        command = "swaylock";
+        command = "${pkgs.swaylock}/bin/swaylock";
       }
     ];
   };

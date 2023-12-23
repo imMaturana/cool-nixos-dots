@@ -1,4 +1,5 @@
-{ lib
+{ pkgs
+, lib
 , config
 , ...
 }:
@@ -124,13 +125,13 @@ in
 
   services.swayidle.timeouts = [
     {
-      timeout = 300;
-      command = "swaylock";
+      timeout = 120;
+      command = "${pkgs.swaylock}/bin/swaylock";
     }
     {
-      timeout = 305;
-      command = "hyprctl dispatch dpms off";
-      resumeCommand = "hyprctl dispatch dpms on";
+      timeout = 180;
+      command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+      resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
     }
   ];
 
