@@ -4,13 +4,11 @@
 }: {
   imports = [
     ../shared
-    ../features/desktop/hyprland
     ../features/podman
     ../features/nvim
     ../features/helix
     ../features/emacs
 
-    # extra configs
     ./hyprland.nix
   ];
 
